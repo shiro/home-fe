@@ -1,0 +1,14 @@
+{
+  "moduleFileExtensions": [
+    "js",
+    "jsx"
+  ],
+  "moduleNameMapper": {
+    "^components(.*)$": "<rootDir>/src/components/$1",
+    "^state(.*)$": "<rootDir>/src/state/$1",
+    "^routes(.*)$": "<rootDir>/src/routes/$1"
+  },
+  "setupFiles": [
+      "<rootDir>/src/tests/setup.js"
+    ]
+}

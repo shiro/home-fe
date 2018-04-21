@@ -1,0 +1,13 @@
+FROM node:8-slim
+
+WORKDIR /opt/app/
+
+COPY package.json yarn.lock ./
+
+RUN yarn --prod --check-files --frozen-lockfile && \
+    chmod -R 777 node_modules
+
+COPY . ./
+
+CMD yarn prod
+
