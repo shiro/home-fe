@@ -7,7 +7,8 @@ node {
     def devApp
 
     stage('Build dev') {
-        devApp = docker.build("shiro/home-fe:${COMMIT}", "--rm -f docker/fe/Dockerfile .")
+        def devTag = ("${BRANCH}" == "master") ? "dev" : "${git.GIT_BRANCH}"
+        devApp = docker.build("shiro/home-fe:${devTag}", "--rm -f docker/fe/Dockerfile .")
     }
 
 
