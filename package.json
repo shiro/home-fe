@@ -3,7 +3,7 @@
   "version": "0.0.1-SNAPSHOT",
   "description": "",
   "scripts": {
-    "prod": "concurrently 'yarn prod:server' 'yarn prod:client'",
+    "prod": "yarn prod:server",
     "prod:server": "cross-env node ./server",
     "prod:client": "cross-env TARGET=client NODE_ENV=production webpack --config webpack/config.js",
     "dev": "concurrently 'yarn dev:server' 'yarn dev:client'",

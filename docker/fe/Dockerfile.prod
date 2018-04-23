@@ -9,5 +9,8 @@ RUN yarn --prod --check-files --frozen-lockfile && \
 
 COPY . ./
 
+RUN yarn prod:client && \
+    rm -rf src assets
+
 CMD yarn prod
 
