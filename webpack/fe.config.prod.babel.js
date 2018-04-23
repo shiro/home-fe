@@ -42,7 +42,7 @@ module.exports = {
         //  path.join(appRoot, 'src/client/scss/main.scss'),
     ],
     output: {
-        filename: "bundle.js",
+        filename: "bundle-[hash].js",
         path: path.join(appRoot, "dist"),
         publicPath: "/assets/",
     },
