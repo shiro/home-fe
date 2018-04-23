@@ -1,7 +1,7 @@
 import * as exampleActions from "state/example/actions";
 
 export const initialState = {
-    message: "hello world"
+    message: "hello rabbits"
 };
 
 export function exampleReducer(state = initialState, action) {
