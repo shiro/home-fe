@@ -21,7 +21,7 @@ export class HelloWorld extends React.Component {
     render() {
         return (
             <div className={"HelloWorld"}>
-                <h1 className={"HelloWorld__title"}>Hello World!!</h1>
+                <h1 className={"HelloWorld__title"}>Hello Rabbit!</h1>
                 <div className={"HelloWorld__msgBox"}>message: {this.props.message}</div>
             </div>
         );
