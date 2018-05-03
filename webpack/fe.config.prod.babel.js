@@ -40,7 +40,7 @@ module.exports = {
     entry: [
         "@babel/polyfill",
         path.join(appRoot, "src/index"),
-        //  path.join(appRoot, 'src/client/scss/main.scss'),
+        path.join(appRoot, "src/scss/app.scss"),
     ],
     output: {
         filename: "bundle-[hash].js",
