@@ -4,6 +4,8 @@ node {
     def BRANCH = "${git.GIT_BRANCH}"
 
     def IS_MASTER = "${BRANCH}" == "master"
+    def IS_DEV = "${BRANCH}" == "dev"
+
 
     def devApp
 
@@ -11,7 +13,6 @@ node {
         def devTag = IS_MASTER ? "dev" : "${git.GIT_BRANCH}"
         devApp = docker.build("shiro/home-fe:${devTag}", "--rm -f docker/fe/Dockerfile .")
     }
-
 
     try {
         stage('Test dev') {
@@ -21,12 +22,20 @@ node {
             }
         }
     } finally {
-        if(!IS_MASTER) {
+        if (!IS_MASTER) {
             echo 'Removing docker image'
             sh "docker rmi ${devApp.id}"
         }
     }
 
+
+    if (IS_DEV) {
+        def stagingApp
+
+        stage('Build staging') {
+            stagingApp = docker.build("shiro/home-fe:staging", "--rm -f docker/fe/Dockerfile.prod .")
+        }
+    }
 
     if (IS_MASTER) {
         def prodApp
