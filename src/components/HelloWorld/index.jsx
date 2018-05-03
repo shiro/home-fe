@@ -22,7 +22,7 @@ export class HelloWorld extends React.Component {
     render() {
         return (
             <div className={"HelloWorld"}>
-                <h1 className={"HelloWorld__title"}>Hello Rabbits!!</h1>
+                <h1 className={"HelloWorld__title"}>Hello Rabbits!</h1>
                 <div className={"HelloWorld__msgBox"}>message: {this.props.message}</div>
             </div>
         );
