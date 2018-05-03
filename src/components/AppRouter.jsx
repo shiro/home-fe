@@ -3,7 +3,8 @@ import { ConnectedRouter } from "react-router-redux";
 import { Provider } from "react-redux";
 
 import routes from "routes";
-import Store, { history } from "state";
+import Store from "state/redux";
+import history from "state/redux/history";
 
 
 //  create the store with the intial state we got
