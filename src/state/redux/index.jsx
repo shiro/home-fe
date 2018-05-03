@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
 import { routerMiddleware } from "react-router-redux";
 import createSagaMiddleware from "redux-saga";
-import { composeWithDevTools } from "redux-devtools-extension";
 
 import history from "state/redux/history";
 
@@ -18,8 +17,10 @@ let middleware = applyMiddleware(
 );
 
 // enable redux-dev-tool extension if in development
-if(process.env.NODE_ENV === "development")
+if(process.env.NODE_ENV === "development"){
+    const composeWithDevTools = require("redux-devtools-extension").composeWithDevTools;
     middleware = composeWithDevTools(middleware);
+}
 
 
 export default function Store(intialState = {}){
