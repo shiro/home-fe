@@ -6,10 +6,8 @@ import routes from "routes";
 import Store from "state/redux";
 import history from "state/redux/history";
 
-
 //  create the store with the intial state we got
 let store = Store(window.__INITIAL_STATE__);
-
 
 function AppRouter() {
     return (

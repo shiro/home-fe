@@ -1,4 +1,4 @@
-// provide correct history factory for the target
+// provide correct history for the target
 let History;
 
 switch(process.env.TARGET){
