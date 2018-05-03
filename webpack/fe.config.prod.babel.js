@@ -16,6 +16,7 @@ const pathResolver = {
         ["components"]: path.join(appRoot, "src/components"),
         ["routes"]: path.join(appRoot, "src/routes"),
         ["state"]: path.join(appRoot, "src/state"),
+        ["scss"]: path.join(appRoot, "src/scss"),
         ["config"]: path.join(appRoot, "config"),
     }
 };

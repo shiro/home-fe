@@ -6,6 +6,7 @@
   "moduleNameMapper": {
     "^components(.*)$": "<rootDir>/src/components/$1",
     "^state(.*)$": "<rootDir>/src/state/$1",
+    "^scss(.*)$": "<rootDir>/src/scss/$1",
     "^routes(.*)$": "<rootDir>/src/routes/$1"
   },
   "setupFiles": [
