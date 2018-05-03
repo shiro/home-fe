@@ -17,7 +17,5 @@ RUN yarn prod:client && \
     yarn cache clean && \
     rm -rf src assets
 
-RUN ls node_modules/babel-eslint 2>/dev/null
-
 CMD yarn prod
 
