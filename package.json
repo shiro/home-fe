@@ -5,10 +5,10 @@
   "scripts": {
     "prod": "yarn prod:server",
     "prod:server": "cross-env node ./server",
-    "prod:client": "cross-env TARGET=client NODE_ENV=production webpack --config webpack/config.js",
+    "prod:client": "cross-env TARGET=client NODE_ENV=production webpack --mode production --config webpack/config.js",
     "dev": "concurrently 'yarn dev:server' 'yarn dev:client'",
     "dev:server": "cross-env node ./server",
-    "dev:client": "cross-env webpack-dev-server --config webpack/config.js",
+    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --mode development --config webpack/config.js",
     "test": "jest --config jest.config.json --updateSnapshot",
     "lint": "eslint --ext js,jsx src server"
   },
