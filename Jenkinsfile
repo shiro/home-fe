@@ -9,13 +9,13 @@ node {
 
     def devApp
 
-    stage('Build dev') {
-        def devTag = IS_MASTER ? "dev" : "${git.GIT_BRANCH}"
-        devApp = docker.build("shiro/home-fe:${devTag}", "--rm -f docker/fe/Dockerfile .")
+    stage('Build nightly') {
+        def tag = IS_MASTER ? "nightly" : "nightly-${git.GIT_BRANCH}"
+        devApp = docker.build("shiro/home-fe:${tag}", "--rm -f docker/fe/Dockerfile .")
     }
 
     try {
-        stage('Test dev') {
+        stage('Test nightly') {
             devApp.inside {
                 sh 'cd /opt/app && yarn lint'
                 sh 'cd /opt/app && yarn test'
@@ -40,8 +40,8 @@ node {
     if (IS_MASTER) {
         def prodApp
 
-        stage('Build prod') {
-            prodApp = docker.build("shiro/home-fe:latest", "--rm -f docker/fe/Dockerfile.prod .")
+        stage('Build production') {
+            prodApp = docker.build("shiro/home-fe:stable", "--rm -f docker/fe/Dockerfile.prod .")
         }
     }
 }
