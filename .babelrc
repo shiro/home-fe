@@ -2,8 +2,9 @@
   "presets": ["@babel/env", "@babel/react"],
 
   "plugins": [
-    "@babel/plugin-transform-async-to-generator",
     "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-async-to-generator",
     "@babel/plugin-proposal-class-properties",
     ["babel-plugin-transform-builtin-extend", {
       globals: ["Error", "Array"]
