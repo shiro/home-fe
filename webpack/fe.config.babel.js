@@ -4,7 +4,9 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import HtmlWebpackHarddiskPlugin from "html-webpack-harddisk-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 
+
 const webpackBase = require("./fe.config.prod.babel.js");
+
 
 const appRoot = path.join(__dirname, "..");
 

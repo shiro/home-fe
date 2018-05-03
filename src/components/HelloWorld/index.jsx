@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import * as exampleActions from "state/example/actions";
 import * as exampleSelectors from "state/example/selectors";
 
+
 export class HelloWorld extends React.Component {
     static propTypes = {
         editMessage: PropTypes.func,

@@ -5,6 +5,7 @@ import { expect } from "chai";
 
 import ConnectedHelloWorld from "components/HelloWorld";
 
+
 const mockStore = configureStore();
 
 describe("HelloWorld", () => {

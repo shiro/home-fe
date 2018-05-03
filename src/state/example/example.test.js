@@ -4,6 +4,7 @@ import { expect } from "chai";
 import { initialState } from "state/example/reducers";
 import * as exampleActions from "state/example/actions";
 
+
 const mockStore = configureStore();
 
 describe("example", () => {
