@@ -10,7 +10,7 @@ node {
     def devApp
 
     stage('Build nightly') {
-        def tag = IS_MASTER ? "nightly" : "nightly-${git.GIT_BRANCH}"
+        def tag = IS_DEV ? "nightly" : "nightly-${git.GIT_COMMIT}"
         devApp = docker.build("shiro/home-fe:${tag}", "--rm -f docker/fe/Dockerfile .")
     }
 
@@ -22,7 +22,7 @@ node {
             }
         }
     } finally {
-        if (!IS_MASTER) {
+        if (!IS_DEV) { // only keep dev builds for cache
             echo 'Removing docker image'
             sh "docker rmi ${devApp.id} 2>/dev/null"
         }
