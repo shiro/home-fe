@@ -24,7 +24,7 @@ node {
     } finally {
         if (!IS_MASTER) {
             echo 'Removing docker image'
-            sh "docker rmi ${devApp.id}"
+            sh "docker rmi ${devApp.id} 2>/dev/null"
         }
     }
 
