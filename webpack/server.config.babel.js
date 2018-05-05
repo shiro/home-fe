@@ -12,7 +12,7 @@ module.exports = {
     devtool: "inline-source-map",
     watch: true,
     watchOptions: {
-        poll: 1000
+        poll: 1000,
     },
     plugins: [
         new CleanWebpackPlugin([webpackPaths.serverDest], {
