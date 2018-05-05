@@ -14,7 +14,7 @@ module.exports = {
     ],
     "settings": {
         "import/resolver": {
-            "webpack": { "config": path.join(appRoot, "./webpack/fe.config.prod.babel.js") }
+            "webpack": { "config": path.join(appRoot, "./webpack/client.config.prod.babel.js") }
         }
     },
     "env": {
@@ -33,6 +33,7 @@ module.exports = {
         // "sort-imports": "error",
         "no-multi-spaces": 2,
         "object-curly-spacing": [2, "always"],
+        "comma-dangle": [2, "always-multiline"],
         
         "import/newline-after-import": [2, { "count": 2 }],
         // "import/order": ["error", {"newlines-between": "always-and-inside-groups"}],

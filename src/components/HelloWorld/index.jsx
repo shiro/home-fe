@@ -31,13 +31,13 @@ export class HelloWorld extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        message: exampleSelectors.getMessage(state)
+        message: exampleSelectors.getMessage(state),
     };
 };
 
 let mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        ...exampleActions
+        ...exampleActions,
     }, dispatch);
 };
 

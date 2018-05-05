@@ -18,6 +18,6 @@ export function* watchEditMessageAsync() {
 
 export function* exampleSaga() {
     return yield all([
-        watchEditMessageAsync()
+        watchEditMessageAsync(),
     ]);
 }

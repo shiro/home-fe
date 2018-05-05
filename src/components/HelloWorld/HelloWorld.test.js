@@ -12,7 +12,7 @@ describe("HelloWorld", () => {
     let store, shallowWrapper;
 
     let initialState = {
-        example: { message: "hello rabbit" }
+        example: { message: "hello rabbit" },
     };
 
     beforeEach(() => {

@@ -22,7 +22,7 @@ describe("example", () => {
 
         const expectedActions = [{
             type: exampleActions.actions.EDIT_MESSAGE,
-            message: testString
+            message: testString,
         }];
 
         expect(actions).to.deep.equal(expectedActions);

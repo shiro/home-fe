@@ -12,10 +12,10 @@ RUN yarn --check-files --frozen-lockfile && \
 COPY . ./
 
 # build the bundle and clean up
-RUN yarn prod:client && \
+RUN yarn prod:build && \
     yarn install --production --ignore-scripts --prefer-offline && \
     yarn cache clean && \
-    rm -rf src assets
+    rm -rf src assets config
 
 CMD yarn prod
 
