@@ -24,7 +24,10 @@ module.exports = {
         new CleanWebpackPlugin([webpackPaths.serverDest], {
             root: webpackPaths.appRoot,
         }),
-        new StartServerPlugin(webpackFiles.serverDest),
+        new StartServerPlugin({
+            name: webpackFiles.serverDest,
+            nodeArgs: ["--inspect=56745"], // allow debugging
+        }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
