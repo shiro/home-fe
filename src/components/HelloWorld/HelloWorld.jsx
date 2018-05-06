@@ -7,7 +7,7 @@ import * as exampleActions from "state/example/exampleActions";
 import * as exampleSelectors from "state/example/exampleSelectors";
 
 
-export class HelloWorld extends React.Component{
+export class HelloWorld extends React.Component {
     static propTypes = {
         editMessage: PropTypes.func,
         editMessageAsync: PropTypes.func,
@@ -15,13 +15,12 @@ export class HelloWorld extends React.Component{
     };
     
     componentDidMount(){
-        // this.props.editMessage("initial update");
-        // this.props.editMessageAsync(new Date().toTimeString());
+        this.props.editMessage("mounted client side");
+        this.props.editMessageAsync(new Date().toTimeString());
     }
     
     static fetchData(store){
-        return store.dispatch(exampleActions.editMessageAsync(new Date().toTimeString()));
-        // do some async stuff
+        return store.dispatch(exampleActions.editMessage("mounted server side"));
     }
     
     render(){
@@ -34,16 +33,18 @@ export class HelloWorld extends React.Component{
     }
 }
 
-let mapStateToProps = (state) =>{
-    return {
-        message: exampleSelectors.getMessage(state),
+let
+    mapStateToProps = (state) =>{
+        return {
+            message: exampleSelectors.getMessage(state),
+        };
     };
-};
 
-let mapDispatchToProps = (dispatch) =>{
-    return bindActionCreators({
-        ...exampleActions,
-    }, dispatch);
-};
+let
+    mapDispatchToProps = (dispatch) =>{
+        return bindActionCreators({
+            ...exampleActions,
+        }, dispatch);
+    };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HelloWorld);

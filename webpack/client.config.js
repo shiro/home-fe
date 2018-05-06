@@ -11,7 +11,7 @@ const webpackBase = require("./client.prod.config");
 
 module.exports = {
     ...webpackBase,
-    devtool: "none",
+    devtool: "inline-source-map",
     watchOptions: {
         poll: true,
     },

@@ -10,7 +10,6 @@ import routes from "routes/routes";
 //  create the store with the intial state we got
 let { store } = Store(window.__INITIAL_STATE__);
 
-console.log(store.getState())
 
 function ClientAppRouter(){
     return (

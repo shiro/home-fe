@@ -17,7 +17,7 @@ const routes =
                     path: "*",
                     component: PageNotFound,
                 },
-            ]
+            ],
     }];
 
 

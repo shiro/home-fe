@@ -35,7 +35,7 @@ module.exports = {
         "comma-dangle": [2, "always-multiline"],
         "no-multi-spaces": 2,
         "object-curly-spacing": [2, "always"],
-        "space-before-blocks": [2, "never"],
+        "space-before-blocks": [2, { "functions": "never", "keywords": "never", "classes": "always" }],
         "space-before-function-paren": [2, "never"],
         
         "import/newline-after-import": [2, { "count": 2 }],

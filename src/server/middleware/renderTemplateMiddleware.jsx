@@ -15,7 +15,7 @@ export default (req, res) =>{
     let page = fs.readFileSync(pathToHtml, "utf8");
     
     if(store){
-        const stateString = "window.__INITIAL_STATE__"
+        const stateString = "window.__INITIAL_STATE__";
         page = page.replace(stateString, `${stateString} = ${JSON.stringify(store.getState())}`);
     
         // Inserts server-side rendered data
