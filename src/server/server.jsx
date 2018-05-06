@@ -11,7 +11,7 @@ console.log("server started");
 if(module.hot){
     console.log("hot reloading is enabled");
     
-    module.hot.accept("server/app", () =>{
+    module.hot.accept("server/serverApp", () =>{
         console.log("hot reloaded server");
         
         server.removeListener("request", currentApp);

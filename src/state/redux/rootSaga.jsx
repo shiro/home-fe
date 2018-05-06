@@ -1,10 +1,10 @@
-import { fork } from "redux-saga/effects";
+import { all, fork } from "redux-saga/effects";
 
 import { exampleSaga } from "state/example/exampleSagas";
 
 
 export default function* rootSaga(){
-    return yield [
+    return yield all([
         fork(exampleSaga),
-    ];
+    ]);
 }

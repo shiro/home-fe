@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-const { appRoot, pathResolver, stats, webpackPaths, webpackFiles } = require("../config/webpack");
+const { appRoot, pathResolver, stats, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack");
 
 
 module.exports = {
@@ -16,45 +16,33 @@ module.exports = {
     stats,
     entry: [
         "@babel/polyfill",
-        path.join(appRoot, "src/index"),
+        path.join(appRoot, "src/client"),
         path.join(appRoot, "src/scss/app.scss"),
     ],
     output: {
         filename: "bundle-[hash].js",
-        path: path.join(appRoot, "dist"),
+        path: webpackPaths.clientDest,
         publicPath: "/assets/",
     },
     resolve: pathResolver,
     module: {
         rules: [
             {
-                test: /\.(jsx)$/,
+                test: /\.jsx$/,
                 include: appRoot,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
+                    options: babelOptions,
                 },
-            },
-            {
-                test: /\.coffee$/,
-                use: [
-                    {
-                        loader: "babel-loader",
-                    },
-                    {
-                        loader: "coffee-loader",
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                ],
             },
             {
                 test: /\.(sass|scss)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
-                        loader: "css-loader", options: {
+                        loader: "css-loader",
+                        options: {
                             sourceMap: true,
                             minimize: true,
                         },
@@ -63,7 +51,6 @@ module.exports = {
                         loader: "sass-loader",
                         options: {
                             sourceMap: true,
-                            includePaths: [],
                         },
                     },
                 ],

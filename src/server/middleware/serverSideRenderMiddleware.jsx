@@ -2,12 +2,13 @@ import React from "react";
 import AppRouter from "components/React/ServerAppRouter";
 import { matchRoutes } from "react-router-config";
 import { renderToString } from "react-dom/server";
+import { END } from "redux-saga";
 
-import routes from "routes";
+import routes from "routes/routes";
 
 
 export default async function serverSideRenderMiddleware(req, res, next){
-    let { store } = req;
+    let { store, sagaPromise } = req;
     
     if(!store)
         return next();
@@ -25,9 +26,13 @@ export default async function serverSideRenderMiddleware(req, res, next){
         }
     });
     
+    // stop all waiting sagas
+    store.dispatch(END);
+    
+    //  hydrate async data before rendering
     try{
-        //  hydrate async data before rendering
-        await Promise.all(promises);
+        // wait for all components and running sagas
+        await Promise.all([...promises, sagaPromise.done]);
         
         //  static component context
         const context = { req, res };

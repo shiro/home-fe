@@ -15,12 +15,12 @@ export class HelloWorld extends React.Component{
     };
     
     componentDidMount(){
-        this.props.editMessage("initial update");
-        this.props.editMessageAsync(new Date().toTimeString());
+        // this.props.editMessage("initial update");
+        // this.props.editMessageAsync(new Date().toTimeString());
     }
     
     static fetchData(store){
-        return store.dispatch(exampleActions.editMessageAsync("async"));
+        return store.dispatch(exampleActions.editMessageAsync(new Date().toTimeString()));
         // do some async stuff
     }
     

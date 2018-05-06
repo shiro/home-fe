@@ -1,5 +1,5 @@
 import { delay } from "redux-saga";
-import { fork, put, takeEvery } from "redux-saga/effects";
+import { all, fork, put, takeEvery } from "redux-saga/effects";
 
 import * as exampleActions from "state/example/exampleActions";
 
@@ -17,7 +17,7 @@ export function* watchEditMessageAsync(){
 }
 
 export function* exampleSaga(){
-    return yield [
+    return yield all([
         fork(watchEditMessageAsync),
-    ];
+    ]);
 }

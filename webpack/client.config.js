@@ -5,7 +5,7 @@ const HtmlWebpackHarddiskPlugin = require("html-webpack-harddisk-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-const { appRoot, webpackPaths, webpackFiles } = require("../config/webpack");
+const { appRoot, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack");
 const webpackBase = require("./client.prod.config");
 
 
@@ -17,7 +17,7 @@ module.exports = {
     },
     entry: [
         "@babel/polyfill",
-        path.join(appRoot, "src/index"),
+        path.join(appRoot, "src/client"),
         path.join(appRoot, "src/scss/app.scss"),
     ],
     devServer: {
@@ -45,30 +45,16 @@ module.exports = {
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
+                    options: babelOptions,
                 },
-            },
-            {
-                test: /\.coffee$/,
-                use: [
-                    {
-                        loader: "babel-loader",
-                    },
-                    {
-                        loader: "coffee-loader",
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                ],
             },
             {
                 test: /\.(sass|scss)$/,
                 use: [
+                    "style-loader",
                     {
-                        loader: "style-loader",
-                    },
-                    {
-                        loader: "css-loader", options: {
+                        loader: "css-loader",
+                        options: {
                             sourceMap: true,
                         },
                     },
@@ -76,7 +62,6 @@ module.exports = {
                         loader: "sass-loader",
                         options: {
                             sourceMap: true,
-                            includePaths: [],
                         },
                     },
                 ],

@@ -7,16 +7,20 @@ const appRoot = path.join(__dirname, "..");
 
 module.exports.appRoot = appRoot;
 
+module.exports.babelOptions = {
+    presets: [["@babel/env", { modules: false }], "@babel/react"],
+};
+
 module.exports.pathResolver = {
-    extensions: [".js", ".jsx", ".coffee"],
+    extensions: [".js", ".jsx", ".scss"],
     alias: {
-        ["~"]: appRoot,
         ["server"]: path.join(appRoot, "src/server"),
         ["components"]: path.join(appRoot, "src/components"),
         ["routes"]: path.join(appRoot, "src/routes"),
         ["state"]: path.join(appRoot, "src/state"),
         ["scss"]: path.join(appRoot, "src/scss"),
         ["config"]: path.join(appRoot, "config"),
+        ["~"]: appRoot,
     },
 };
 

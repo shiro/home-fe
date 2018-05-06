@@ -5,10 +5,12 @@ import { renderRoutes } from "react-router-config";
 
 import Store from "state/redux/reduxStore";
 import history from "state/redux/history";
-import routes from "routes";
+import routes from "routes/routes";
 
 //  create the store with the intial state we got
-let store = Store(window.__INITIAL_STATE__);
+let { store } = Store(window.__INITIAL_STATE__);
+
+console.log(store.getState())
 
 function ClientAppRouter(){
     return (

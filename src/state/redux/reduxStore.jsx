@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
-import { routerMiddleware } from "react-router-redux";
+import { routerMiddleware as createRouterMiddleware } from "react-router-redux";
 import createSagaMiddleware from "redux-saga";
 
 import history from "state/redux/history";
@@ -9,11 +9,13 @@ import rootSaga from "state/redux/rootSaga";
 
 
 // create middleware
-const sagaMiddleware = createSagaMiddleware();
+export const sagaMiddleware = createSagaMiddleware();
+
+export const routerMiddleware = createRouterMiddleware(history);
 
 let middleware = applyMiddleware(
     sagaMiddleware,
-    routerMiddleware(history)
+    routerMiddleware
 );
 
 // enable redux-dev-tool extension if in development
@@ -22,13 +24,15 @@ if(process.env.NODE_ENV === "development"){
     middleware = composeWithDevTools(middleware);
 }
 
-
 export default function Store(intialState = {}){
     let store = createStore(
         reducers,
         intialState,
         middleware
     );
-    sagaMiddleware.run(rootSaga);
-    return store;
+    
+    // run the root saga
+    let sagaPromise = sagaMiddleware.run(rootSaga);
+    
+    return { store, sagaPromise };
 }

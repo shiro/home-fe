@@ -4,7 +4,7 @@ const webpack = require("webpack");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-const { appRoot, pathResolver, stats, webpackPaths, webpackFiles } = require("../config/webpack");
+const { appRoot, pathResolver, stats, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack");
 
 
 module.exports = {
@@ -31,29 +31,17 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.jsx$/,
                 include: appRoot,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
-                    options: {
-                        presets: [["@babel/env", { modules: false }], "@babel/react"],
-                    },
+                    options: babelOptions,
                 },
             },
             {
-                test: /\.coffee$/,
-                use: [
-                    {
-                        loader: "babel-loader",
-                    },
-                    {
-                        loader: "coffee-loader",
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                ],
+                test: /\.(sass|scss)$/,
+                use: "null-loader",
             },
         ],
     },

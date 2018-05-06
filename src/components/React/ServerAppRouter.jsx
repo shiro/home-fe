@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { renderRoutes } from "react-router-config";
 import PropTypes from "prop-types";
 
-import routes from "routes";
+import routes from "routes/routes";
 
 
 ServerAppRouter.propTypes = {
