@@ -18,4 +18,3 @@ RUN yarn prod:build && \
     rm -rf src assets config
 
 CMD yarn prod:run
-
