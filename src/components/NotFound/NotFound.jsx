@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 
-class PageNotFound extends React.Component {
+class NotFound extends React.Component{
     static propTypes = {
         staticContext: PropTypes.object,
     };
@@ -16,4 +16,4 @@ class PageNotFound extends React.Component {
 }
 
 
-export default PageNotFound;
+export default NotFound;

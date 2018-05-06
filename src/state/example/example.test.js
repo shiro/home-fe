@@ -1,8 +1,8 @@
 import configureStore from "redux-mock-store";
 import { expect } from "chai";
 
-import { initialState } from "state/example/reducers";
-import * as exampleActions from "state/example/actions";
+import { initialState } from "state/example/exampleReducers";
+import * as exampleActions from "state/example/exampleActions";
 
 
 const mockStore = configureStore();
@@ -21,7 +21,7 @@ describe("example", () =>{
         const actions = store.getActions();
 
         const expectedActions = [{
-            type: exampleActions.actions.EDIT_MESSAGE,
+            type: exampleActions.exampleActions.EDIT_MESSAGE,
             message: testString,
         }];
 

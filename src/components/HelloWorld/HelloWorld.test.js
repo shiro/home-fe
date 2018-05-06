@@ -3,7 +3,7 @@ import { mount, shallow } from "enzyme";
 import configureStore from "redux-mock-store";
 import { expect } from "chai";
 
-import ConnectedHelloWorld from "components/HelloWorld";
+import ConnectedHelloWorld from "components/HelloWorld/HelloWorld";
 
 
 const mockStore = configureStore();

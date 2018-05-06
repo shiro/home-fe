@@ -1,5 +1,5 @@
-import HelloWorld from "components/HelloWorld";
-import PageNotFound from "components/PageNotFound";
+import HelloWorld from "components/HelloWorld/HelloWorld";
+import PageNotFound from "components/NotFound/NotFound";
 
 
 const routes =

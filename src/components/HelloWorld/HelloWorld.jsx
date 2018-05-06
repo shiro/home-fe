@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 
-import * as exampleActions from "state/example/actions";
-import * as exampleSelectors from "state/example/selectors";
+import * as exampleActions from "state/example/exampleActions";
+import * as exampleSelectors from "state/example/exampleSelectors";
 
 
-export class Index extends React.Component {
+export class HelloWorld extends React.Component{
     static propTypes = {
         editMessage: PropTypes.func,
         editMessageAsync: PropTypes.func,
@@ -46,4 +46,4 @@ let mapDispatchToProps = (dispatch) =>{
     }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default connect(mapStateToProps, mapDispatchToProps)(HelloWorld);

@@ -4,7 +4,7 @@ const webpack = require("webpack");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-const { appRoot, pathResolver, stats, webpackPaths } = require("../config/webpack");
+const { appRoot, pathResolver, stats, webpackPaths, webpackFiles } = require("../config/webpack");
 
 
 module.exports = {
@@ -14,11 +14,11 @@ module.exports = {
     stats,
     entry: [
         "@babel/polyfill",
-        path.join(appRoot, "src/server"),
+        path.join(appRoot, "src/server/server"),
     ],
     output: {
-        filename: "server.js",
-        path: path.join(appRoot, "dist_server"),
+        filename: webpackFiles.serverDest,
+        path: webpackPaths.serverDest,
     },
     node: { // workaround for webpack bug
         fs: "empty",

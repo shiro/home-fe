@@ -13,7 +13,7 @@ module.exports = {
     entry: [
         "@babel/polyfill",
         "webpack/hot/poll?1000",
-        path.join(appRoot, "src/server"),
+        path.join(appRoot, "src/server/server"),
     ],
     watch: true,
     watchOptions: {

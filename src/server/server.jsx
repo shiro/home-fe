@@ -1,10 +1,10 @@
 import http from "http";
-import app from "server/app";
+import serverApp from "server/serverApp";
 
 
-const server = http.createServer(app);
+const server = http.createServer(serverApp);
 
-let currentApp = app;
+let currentApp = serverApp;
 server.listen(80);
 console.log("server started");
 
@@ -15,7 +15,7 @@ if(module.hot){
         console.log("hot reloaded server");
         
         server.removeListener("request", currentApp);
-        server.on("request", app);
-        currentApp = app;
+        server.on("request", serverApp);
+        currentApp = serverApp;
     });
 }

@@ -1,18 +1,18 @@
-export const actions = {
+export const exampleActions = {
     EDIT_MESSAGE: "EDIT_MESSAGE",
     EDIT_MESSAGE_ASYNC: "EDIT_MESSAGE_ASYNC",
 };
 
 export const editMessage = (message = "undefined") =>{
     return {
-        type: actions.EDIT_MESSAGE,
+        type: exampleActions.EDIT_MESSAGE,
         message,
     };
 };
 
 export const editMessageAsync = (message = "undefined") =>{
     return {
-        type: actions.EDIT_MESSAGE_ASYNC,
+        type: exampleActions.EDIT_MESSAGE_ASYNC,
         message,
     };
 };
