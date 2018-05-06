@@ -1,23 +1,24 @@
 import React from "react";
 import { ConnectedRouter } from "react-router-redux";
 import { Provider } from "react-redux";
+import { renderRoutes } from "react-router-config";
 
-import routes from "routes";
-import Store from "state/redux";
+import Store from "state/redux/store";
 import history from "state/redux/history";
+import routes from "routes";
 
 //  create the store with the intial state we got
 let store = Store(window.__INITIAL_STATE__);
 
-function AppRouter() {
+function ClientAppRouter(){
     return (
         <Provider store={store}>
             <ConnectedRouter history={history}>
-                {routes}
+                {renderRoutes(routes)}
             </ConnectedRouter>
         </Provider>
     );
 }
 
 
-export default AppRouter;
+export default ClientAppRouter;

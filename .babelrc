@@ -1,11 +1,13 @@
 {
-  "presets": [["@babel/env", {"modules": false}], "@babel/react"],
+  "presets": ["@babel/env", "@babel/react"],
 
   "plugins": [
     "@babel/plugin-proposal-object-rest-spread",
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-transform-async-to-generator",
     "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-syntax-optional-chaining",
+    "@babel/plugin-proposal-optional-chaining",
     ["babel-plugin-transform-builtin-extend", {
       "globals": ["Error", "Array"]
     }],

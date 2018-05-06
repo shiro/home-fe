@@ -13,6 +13,7 @@ module.exports = {
     devtool: "source-map",
     stats,
     entry: [
+        "@babel/polyfill",
         path.join(appRoot, "src/server"),
     ],
     output: {
@@ -35,6 +36,9 @@ module.exports = {
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
+                    options: {
+                        presets: [["@babel/env", { modules: false }], "@babel/react"],
+                    },
                 },
             },
             {

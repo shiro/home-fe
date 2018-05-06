@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 const { appRoot, webpackPaths, webpackFiles } = require("../config/webpack");
-const webpackBase = require("./client.config.prod.babel");
+const webpackBase = require("./client.prod.config");
 
 
 module.exports = {

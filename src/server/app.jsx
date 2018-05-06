@@ -1,11 +1,8 @@
 import express from "express";
+import renderTemplateMiddleware from "server/middleware/renderTemplate";
+import reduxStoreMiddleware from "server/middleware/reduxStore";
+import serverSideRenderMiddleware from "server/middleware/serverSideRender";
 
-import config from "config/server";
-
-import msg from "./foo";
-
-
-console.log(msg);
 
 // create our app
 const app = express();
@@ -15,11 +12,16 @@ app.use("/assets", express.static("dist"));
 
 // server everything else
 app.get("*",
-    (req, res) =>{
-        // console.log("req");
-        res.sendFile("app.html", { root: config.path.assets });
-    }
+    reduxStoreMiddleware,
+    serverSideRenderMiddleware,
+    renderTemplateMiddleware
 );
+
+// todo improve error handling
+app.use( (err, req, res) =>{
+    console.error(err.stack);
+    res.status(500).send("Something broke!");
+});
 
 
 export default app;

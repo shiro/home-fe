@@ -1,15 +1,19 @@
-import React from "react";
-import { Route,Switch } from "react-router";
-
 import HelloWorld from "components/HelloWorld";
 import PageNotFound from "components/PageNotFound";
 
 
-const routes = (
-    <Switch>
-        <Route exact path="/" component={HelloWorld}/>
-        <Route component={PageNotFound}/>
-    </Switch>
-);
+const routes =
+    [
+        {
+            path: "/",
+            exact: true,
+            component: HelloWorld,
+        },
+        {
+            path: "*",
+            component: PageNotFound,
+        },
+    ];
+
 
 export default routes;

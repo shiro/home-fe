@@ -7,14 +7,14 @@ import * as exampleActions from "state/example/actions";
 
 const mockStore = configureStore();
 
-describe("example", () => {
+describe("example", () =>{
     let store;
 
-    beforeEach(() => {
+    beforeEach(() =>{
         store = mockStore(initialState);
     });
 
-    it("updates message", () => {
+    it("updates message", () =>{
         const testString = "Rabbits are cute";
 
         store.dispatch(exampleActions.editMessage(testString));

@@ -7,8 +7,7 @@ switch(process.env.TARGET){
         break;
     }
     default:{
-        throw new Error("only client configuration is supported for now");
-        // History = require('history/createMemoryHistory').default;
+        History = require("history/createMemoryHistory").default;
     }
 }
 

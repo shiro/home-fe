@@ -7,19 +7,24 @@ import * as exampleActions from "state/example/actions";
 import * as exampleSelectors from "state/example/selectors";
 
 
-export class HelloWorld extends React.Component {
+export class Index extends React.Component {
     static propTypes = {
         editMessage: PropTypes.func,
         editMessageAsync: PropTypes.func,
         message: PropTypes.string,
     };
-
-    componentDidMount() {
+    
+    componentDidMount(){
         this.props.editMessage("initial update");
         this.props.editMessageAsync(new Date().toTimeString());
     }
-
-    render() {
+    
+    static fetchData(store){
+        return store.dispatch(exampleActions.editMessageAsync("async"));
+        // do some async stuff
+    }
+    
+    render(){
         return (
             <div className={"HelloWorld"}>
                 <h1 className={"HelloWorld__title"}>Hello Rabbits!</h1>
@@ -29,16 +34,16 @@ export class HelloWorld extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state) =>{
     return {
         message: exampleSelectors.getMessage(state),
     };
 };
 
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch) =>{
     return bindActionCreators({
         ...exampleActions,
     }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HelloWorld);
+export default connect(mapStateToProps, mapDispatchToProps)(Index);
