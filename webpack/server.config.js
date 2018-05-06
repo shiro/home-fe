@@ -26,7 +26,7 @@ module.exports = {
         }),
         new StartServerPlugin({
             name: webpackFiles.serverDest,
-            nodeArgs: ["--inspect=56745"], // allow debugging
+            nodeArgs: ["--inspect=0.0.0.0:54985"], // allow debugging
         }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),

@@ -9,7 +9,7 @@
     "prod:server:build": "webpack --mode production --config webpack/server.prod.config.js",
     "prod:server:run": "cross-env node ./dist_server/server",
     "prod:client:build": "webpack --mode production --config webpack/client.prod.config.js",
-    "dev": "concurrently 'yarn dev:server' 'yarn dev:client'",
+    "dev": "cross-env concurrently 'yarn dev:server' 'yarn dev:client'",
     "dev:server": "webpack --mode development --config webpack/server.config.js",
     "dev:client": "webpack-dev-server --mode development --config webpack/client.config.js",
     "test": "jest --config jest.config.json --updateSnapshot",
