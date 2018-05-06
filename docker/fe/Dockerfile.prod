@@ -17,5 +17,5 @@ RUN yarn prod:build && \
     yarn cache clean && \
     rm -rf src assets config
 
-CMD yarn prod
+CMD yarn prod:run
 
