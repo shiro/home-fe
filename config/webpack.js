@@ -19,6 +19,7 @@ module.exports.pathResolver = {
         ["routes"]: path.join(appRoot, "src/routes"),
         ["state"]: path.join(appRoot, "src/state"),
         ["scss"]: path.join(appRoot, "src/scss"),
+        ["api"]: path.join(appRoot, "src/api"),
         ["config"]: path.join(appRoot, "config"),
         ["~"]: appRoot,
     },

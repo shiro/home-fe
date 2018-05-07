@@ -12,6 +12,7 @@
       "components/*": ["src/components/*"],
       "state/*": ["src/state/*"],
       "scss/*": ["src/scss/*"],
+      "api/*": ["src/api/*"],
       "routes/*": ["src/routes/*"]
     }
   },

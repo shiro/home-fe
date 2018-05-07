@@ -1,4 +1,6 @@
 {
+  "parser": "typescript-eslint-parser",
+  "plugins": ["typescript"],
   "lintOptions": {
     "typeCheck": true
   },
@@ -9,7 +11,7 @@
   "rules": {
     "cyclomatic-complexity": false,
     "no-parameter-properties": false,
-//    "no-unused-variable": false,
+    //    "no-unused-variable": false,
     "no-magic-numbers": false,
     "no-default-export": false,
     "no-implicit-dependencies": false,
@@ -34,7 +36,7 @@
     "strict-type-predicates": false,
     "no-switch-case-fall-through": true,
     "strict-boolean-expressions": [true, "allow-boolean-or-undefined"],
-    "whitespace": [true, {"check-preblock":false}],
+    "whitespace": [true, {"check-preblock": false}],
     "no-any": false,
     "no-unsafe-any": false,
     //    "switch-default": false,

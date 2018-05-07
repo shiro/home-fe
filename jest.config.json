@@ -14,6 +14,7 @@
     "^components(.*)$": "<rootDir>/src/components/$1",
     "^state(.*)$": "<rootDir>/src/state/$1",
     "^server(.*)$": "<rootDir>/src/server/$1",
+    "^api(.*)$": "<rootDir>/src/api/$1",
     "^scss(.*)$": "<rootDir>/src/scss/$1",
     "^routes(.*)$": "<rootDir>/src/routes/$1"
   },
