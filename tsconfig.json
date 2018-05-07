@@ -15,9 +15,5 @@
       "routes/*": ["src/routes/*"]
     }
   },
-  "exclude": ["node_modules"],
-  "files": [
-    "typings/index.d.ts",
-    "src/server/serverApp.tsx"
-  ]
+  "exclude": ["node_modules"]
 }
