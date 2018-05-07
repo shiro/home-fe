@@ -45,6 +45,15 @@ module.exports = {
             },
         ],
     },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true,
+            }),
+        ],
+    },
     plugins: [
         new CleanWebpackPlugin([webpackPaths.serverDest], {
             root: webpackPaths.appRoot,
@@ -52,9 +61,6 @@ module.exports = {
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify("production"),
             "process.env.TARGET": JSON.stringify("server"),
-        }),
-        new UglifyJSPlugin({
-            sourceMap: true,
         }),
     ],
 };
