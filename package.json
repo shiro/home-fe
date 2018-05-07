@@ -30,7 +30,7 @@
     "maven"
   ],
   "license": "MIT",
-  "homepage": "poig1.projekte.fh-hagenberg.at",
+  "homepage": "usagi.io",
   "dependencies": {
     "body-parser": "^1.18.2",
     "classnames": "^2.2.5",
