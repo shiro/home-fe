@@ -1,6 +1,6 @@
-import express from "express";
-import renderTemplateMiddleware from "server/middleware/renderTemplateMiddleware";
+import * as express from "express";
 import reduxStoreMiddleware from "server/middleware/reduxStoreMiddleware";
+import renderTemplateMiddleware from "server/middleware/renderTemplateMiddleware";
 import serverSideRenderMiddleware from "server/middleware/serverSideRenderMiddleware";
 
 
@@ -14,14 +14,13 @@ serverApp.use("/assets", express.static("dist"));
 serverApp.get("*",
     reduxStoreMiddleware,
     serverSideRenderMiddleware,
-    renderTemplateMiddleware
+    renderTemplateMiddleware,
 );
 
 // todo improve error handling
-serverApp.use( (err, req, res) =>{
+serverApp.use((err: any, req, res, next) => {
     console.error(err.stack);
     res.status(500).send("Something broke!");
 });
-
 
 export default serverApp;

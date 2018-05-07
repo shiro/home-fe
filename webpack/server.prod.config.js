@@ -1,14 +1,16 @@
 const path = require("path");
-
-const webpack = require("webpack");
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const HappyPack = require("happypack");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const webpack = require("webpack");
 
 const { appRoot, pathResolver, stats, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack");
 
 
 module.exports = {
     name: "server",
+    mode: "production",
     target: "node",
     devtool: "source-map",
     stats,
@@ -30,6 +32,18 @@ module.exports = {
     resolve: pathResolver,
     module: {
         rules: [
+            {
+                test: /\.tsx$/,
+                include: appRoot,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: "babel-loader",
+                        options: babelOptions,
+                    },
+                    "happypack/loader?id=ts",
+                ],
+            },
             {
                 test: /\.jsx$/,
                 include: appRoot,
@@ -55,6 +69,17 @@ module.exports = {
         ],
     },
     plugins: [
+        new HappyPack({
+            id: "ts",
+            threads: 2,
+            loaders: [
+                {
+                    path: "ts-loader",
+                    query: { happyPackMode: true },
+                },
+            ],
+        }),
+        new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
         new CleanWebpackPlugin([webpackPaths.serverDest], {
             root: webpackPaths.appRoot,
         }),

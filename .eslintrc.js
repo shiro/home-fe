@@ -5,7 +5,10 @@ const appRoot = path.join(__dirname);
 
 module.exports = {
     "parser": "babel-eslint",
-    "plugins": ["jest"],
+    "plugins": [
+        "jest",
+        // "import",
+    ],
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",

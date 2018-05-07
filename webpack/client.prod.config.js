@@ -6,12 +6,15 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const HappyPack = require("happypack");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const { appRoot, pathResolver, stats, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack");
 
 
 module.exports = {
     name: "client",
+    mode: "production",
     devtool: "source-map",
     stats,
     entry: [
@@ -27,6 +30,18 @@ module.exports = {
     resolve: pathResolver,
     module: {
         rules: [
+            {
+                test: /\.tsx$/,
+                include: appRoot,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: "babel-loader",
+                        options: babelOptions,
+                    },
+                    "happypack/loader?id=ts",
+                ],
+            },
             {
                 test: /\.jsx$/,
                 include: appRoot,
@@ -66,8 +81,29 @@ module.exports = {
             }),
             new OptimizeCSSAssetsPlugin({}),
         ],
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    chunks: "initial",
+                    test: path.resolve(__dirname, "node_modules"),
+                    name: "vendor",
+                    enforce: true,
+                },
+            },
+        },
     },
     plugins: [
+        new HappyPack({
+            id: "ts",
+            threads: 2,
+            loaders: [
+                {
+                    path: "ts-loader",
+                    query: { happyPackMode: true },
+                },
+            ],
+        }),
+        new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
         new CleanWebpackPlugin([webpackPaths.clientDest], {
             root: webpackPaths.appRoot,
         }),

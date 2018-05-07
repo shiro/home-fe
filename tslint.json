@@ -1,0 +1,48 @@
+{
+  "lintOptions": {
+    "typeCheck": true
+  },
+  "extends": [
+    "tslint-eslint-rules",
+    "tslint:all"
+  ],
+  "rules": {
+    "cyclomatic-complexity": false,
+    "no-parameter-properties": false,
+    "no-unused-variable": false,
+    "no-magic-numbers": false,
+    "no-default-export": false,
+    "no-implicit-dependencies": false,
+    "no-import-side-effect": false,
+    "variable-name": false,
+    "curly": false,
+    "no-consecutive-blank-lines": false,
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "member-access": true,
+    "max-line-length": [true, 140],
+    "no-console": false,
+    "no-submodule-imports": false,
+    "newline-per-chained-call": false,
+    //    "one-line": false,
+    "typedef": false,
+    "indent": [true, "spaces", 4],
+    "align": false,
+    "strict-type-predicates": false,
+    "no-switch-case-fall-through": true,
+    "strict-boolean-expressions": [true, "allow-boolean-or-undefined"],
+    "whitespace": [true, {"check-preblock":false}],
+    "no-any": false,
+    "no-unsafe-any": false,
+    //    "switch-default": false,
+    //    "variable-name": [true,
+    //      "ban-keywords",
+    //      "check-format",
+    //      "allow-leading-underscore",
+    //      "allow-pascal-case"
+    //    ]
+    "ordered-imports": [true, {"grouped-imports": true}]
+  }
+}

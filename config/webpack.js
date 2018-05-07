@@ -12,7 +12,7 @@ module.exports.babelOptions = {
 };
 
 module.exports.pathResolver = {
-    extensions: [".js", ".jsx", ".scss"],
+    extensions: [".tsx", ".js", ".jsx", ".scss"],
     alias: {
         ["server"]: path.join(appRoot, "src/server"),
         ["components"]: path.join(appRoot, "src/components"),

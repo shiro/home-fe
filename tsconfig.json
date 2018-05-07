@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6", // specify module code generation
+    "jsx": "react", // use typescript to transpile jsx to js
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "server/*": ["src/server/*"],
+      "components/*": ["src/components/*"],
+      "state/*": ["src/state/*"],
+      "scss/*": ["src/scss/*"],
+      "routes/*": ["src/routes/*"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "files": [
+    "typings/index.d.ts",
+    "src/server/serverApp.tsx"
+  ]
+}
