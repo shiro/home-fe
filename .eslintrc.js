@@ -6,14 +6,25 @@ const appRoot = path.join(__dirname);
 module.exports = {
     "parser": "babel-eslint",
     "plugins": [
+        "typescript",
+        "import",
         "jest",
-        // "import",
     ],
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:import/errors",
-        "plugin:jest/recommended"
+        "plugin:jest/recommended",
+    ],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "parser": "typescript-eslint-parser",
+            "rules": {
+                "no-undef": 0,
+                "react/prop-types": 0,
+            }
+        },
     ],
     "settings": {
         "import/resolver": {
@@ -34,11 +45,11 @@ module.exports = {
         "indent": [2, 4, { "SwitchCase": 1 }],
         "spaced-comment": [2, "always"],
         // "sort-imports": "error",
-        "arrow-spacing": [2, { "before": true, "after": false }],
+        "arrow-spacing": [2, { "before": true, "after": true }],
         "comma-dangle": [2, "always-multiline"],
         "no-multi-spaces": 2,
         "object-curly-spacing": [2, "always"],
-        "space-before-blocks": [2, { "functions": "never", "keywords": "never", "classes": "always" }],
+        "space-before-blocks": [2, { "functions": "always", "keywords": "always", "classes": "always" }],
         "space-before-function-paren": [2, "never"],
         
         "import/newline-after-import": [2, { "count": 2 }],

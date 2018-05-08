@@ -1,9 +1,10 @@
 import React from "react";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import * as exampleActions from "state/example/exampleActions";
+import { exampleActionCreators } from "state/example/exampleActions";
 import * as exampleSelectors from "state/example/exampleSelectors";
+
 
 interface IProps {
     message: string;
@@ -14,7 +15,7 @@ interface IProps {
 
 export class HelloWorld extends React.Component<IProps, void> {
     public static fetchData(store) {
-        return store.dispatch(exampleActions.editMessage("mounted server side"));
+        return store.dispatch(exampleActionCreators.editMessage("mounted server side"));
     }
 
     public componentDidMount() {
@@ -32,14 +33,12 @@ export class HelloWorld extends React.Component<IProps, void> {
     }
 }
 
-const mapStateToProps = (state) =>
-    ({
-        message: exampleSelectors.getMessage(state),
-    });
+const mapStateToProps = (state) => ({
+    message: exampleSelectors.getMessage(state),
+});
 
-const mapDispatchToProps = (dispatch) =>
-    bindActionCreators({
-        ...exampleActions,
-    }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators(
+    exampleActionCreators,
+    dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(HelloWorld);

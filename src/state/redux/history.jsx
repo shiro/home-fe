@@ -1,12 +1,12 @@
 // provide correct history for the target
 let History;
 
-switch(process.env.TARGET){
-    case "client":{
+switch(process.env.TARGET) {
+    case "client": {
         History = require("history/createBrowserHistory").default;
         break;
     }
-    default:{
+    default: {
         History = require("history/createMemoryHistory").default;
     }
 }

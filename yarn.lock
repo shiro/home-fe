@@ -316,6 +316,12 @@
   dependencies:
     "@babel/helper-plugin-utils" "7.0.0-beta.46"
 
+"@babel/plugin-syntax-decorators@^7.0.0-beta.46":
+  version "7.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-decorators/-/plugin-syntax-decorators-7.0.0-beta.46.tgz#e60903d38dc5aaeab07eb3aaf8582055570300fe"
+  dependencies:
+    "@babel/helper-plugin-utils" "7.0.0-beta.46"
+
 "@babel/plugin-syntax-dynamic-import@^7.0.0-beta.46":
   version "7.0.0-beta.46"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-dynamic-import/-/plugin-syntax-dynamic-import-7.0.0-beta.46.tgz#651459c419d5ec0609a518370a417b8b47c52583"
@@ -349,6 +355,12 @@
 "@babel/plugin-syntax-optional-chaining@7.0.0-beta.46", "@babel/plugin-syntax-optional-chaining@^7.0.0-beta.46":
   version "7.0.0-beta.46"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-optional-chaining/-/plugin-syntax-optional-chaining-7.0.0-beta.46.tgz#77c51b180a9895d701b398441d94815c56946a75"
+  dependencies:
+    "@babel/helper-plugin-utils" "7.0.0-beta.46"
+
+"@babel/plugin-syntax-typescript@7.0.0-beta.46":
+  version "7.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.0.0-beta.46.tgz#2a9e0e1f3bb3bd918571c5ee4db97bb2b00e8642"
   dependencies:
     "@babel/helper-plugin-utils" "7.0.0-beta.46"
 
@@ -559,6 +571,13 @@
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typeof-symbol/-/plugin-transform-typeof-symbol-7.0.0-beta.46.tgz#643529184cbb07199237c94537c89ea9a721fa0a"
   dependencies:
     "@babel/helper-plugin-utils" "7.0.0-beta.46"
+
+"@babel/plugin-transform-typescript@^7.0.0-beta.46":
+  version "7.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.0.0-beta.46.tgz#bcb57558c87de7ae2f4f3a36322934c799bf3774"
+  dependencies:
+    "@babel/helper-plugin-utils" "7.0.0-beta.46"
+    "@babel/plugin-syntax-typescript" "7.0.0-beta.46"
 
 "@babel/plugin-transform-unicode-regex@7.0.0-beta.46":
   version "7.0.0-beta.46"
@@ -3578,6 +3597,12 @@ eslint-plugin-react@^7.7.0:
     has "^1.0.1"
     jsx-ast-utils "^2.0.1"
     prop-types "^15.6.0"
+
+eslint-plugin-typescript@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-typescript/-/eslint-plugin-typescript-0.12.0.tgz#e23d58cb27fe28e89fc641a1f20e8d862cb99aef"
+  dependencies:
+    requireindex "~1.1.0"
 
 eslint-scope@^3.7.1, eslint-scope@~3.7.1:
   version "3.7.1"
@@ -8314,6 +8339,10 @@ require-uncached@^1.0.3:
   dependencies:
     caller-path "^0.1.0"
     resolve-from "^1.0.0"
+
+requireindex@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.1.0.tgz#e5404b81557ef75db6e49c5a72004893fe03e162"
 
 requires-port@1.0.x, requires-port@^1.0.0:
   version "1.0.0"

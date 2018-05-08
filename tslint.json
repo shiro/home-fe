@@ -1,6 +1,4 @@
 {
-  "parser": "typescript-eslint-parser",
-  "plugins": ["typescript"],
   "lintOptions": {
     "typeCheck": true
   },
@@ -9,6 +7,8 @@
     "tslint:all"
   ],
   "rules": {
+    "max-classes-per-file": false,
+    "one-line": false,
     "cyclomatic-complexity": false,
     "no-parameter-properties": false,
     //    "no-unused-variable": false,

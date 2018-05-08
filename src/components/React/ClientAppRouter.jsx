@@ -11,7 +11,7 @@ import routes from "routes/routes";
 let { store } = Store(window.__INITIAL_STATE__);
 
 
-function ClientAppRouter(){
+function ClientAppRouter() {
     return (
         <Provider store={store}>
             <ConnectedRouter history={history}>

@@ -1,7 +1,7 @@
 import Store from "state/redux/reduxStore";
 
 
-export default function reduxStoreMiddleware(req, res, next){
+export default function reduxStoreMiddleware(req, res, next) {
     //  create a new redux store
     let { store, sagaPromise } = Store();
     

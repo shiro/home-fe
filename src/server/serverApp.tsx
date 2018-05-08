@@ -5,7 +5,7 @@ import serverSideRenderMiddleware from "server/middleware/serverSideRenderMiddle
 
 
 // create our app
-const serverApp = express();
+const serverApp: express.Express = express();
 
 // serve static resources
 serverApp.use("/assets", express.static("dist"));
@@ -18,7 +18,7 @@ serverApp.get("*",
 );
 
 // todo improve error handling
-serverApp.use((err: any, req, res, next) => {
+serverApp.use((err: any, req, res: any) => {
     console.error(err.stack);
     res.status(500).send("Something broke!");
 });

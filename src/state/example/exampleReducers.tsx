@@ -10,7 +10,7 @@ export const exampleReducer = (state = initialState, action) => {
         case exampleActions.exampleActions.EDIT_MESSAGE: {
             const message = action.message;
 
-            return {...state, message};
+            return { ...state, message };
         }
         default:
             return state;

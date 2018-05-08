@@ -3,7 +3,7 @@ import path from "path";
 import serverConfig from "config/server";
 
 
-export default (req, res) =>{
+export default (req, res) => {
     const { store, pageContent } = req;
     
     // Loads a template
@@ -14,7 +14,7 @@ export default (req, res) =>{
     
     let page = fs.readFileSync(pathToHtml, "utf8");
     
-    if(store){
+    if(store) {
         const stateString = "window.__INITIAL_STATE__";
         page = page.replace(stateString, `${stateString} = ${JSON.stringify(store.getState())}`);
     

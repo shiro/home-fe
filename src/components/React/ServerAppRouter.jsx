@@ -13,7 +13,7 @@ ServerAppRouter.propTypes = {
     location: PropTypes.string.isRequired,
 };
 
-function ServerAppRouter({ context, store, location }){
+function ServerAppRouter({ context, store, location }) {
     return (
         <Provider store={store}>
             <StaticRouter context={context} location={location}>
