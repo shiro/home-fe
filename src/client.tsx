@@ -1,15 +1,15 @@
 import React from "react";
-import { render, hydrate } from "react-dom";
+import { hydrate, render } from "react-dom";
 
 import AppRouter from "components/React/ClientAppRouter";
 
 
 const renderApp = (app) => {
     const root = document.getElementById("app");
-    
+
     // render or hydrate depending on SSR being enabled or not
-    const method = root.children.length ? hydrate : render;
-    
+    const method = root.children.length === 0 ? hydrate : render;
+
     method.call(this, app, root);
 };
 
@@ -18,11 +18,11 @@ window.onload = () => {
 };
 
 // hot swapping with WDS
-if(module.hot) {
+if((module as any).hot) {
     module.hot.accept("components/React/ClientAppRouter", () => {
-        let NewAppRouter = require("components/React/ClientAppRouter").default;
+        const NewAppRouter = require("components/React/ClientAppRouter").default;
         renderApp(<NewAppRouter/>);
-    }
+    },
     );
 }
 

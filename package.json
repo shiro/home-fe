@@ -13,8 +13,12 @@
     "dev:server": "webpack --config webpack/server.config.js",
     "dev:client": "webpack-dev-server --config webpack/client.config.js",
     "test": "jest --config jest.config.json --updateSnapshot",
-    "lint": "eslint --ext js,jsx,ts,tsx src",
-    "lint:fix": "yarn lint --fix"
+    "lint": "concurrently 'yarn lint:es' 'yarn lint:ts'",
+    "lint:fix": "concurrently 'yarn lint:es:fix' 'yarn lint:ts:fix'",
+    "lint:es": "eslint --ext js,jsx,ts,tsx src",
+    "lint:ts": "tslint -p .",
+    "lint:es:fix": "yarn lint:es --fix",
+    "lint:ts:fix": "yarn lint:ts --fix"
   },
   "repository": {
     "type": "git",
@@ -76,6 +80,7 @@
     "@types/react-dom": "^16.0.5",
     "@types/react-test-renderer": "^16.0.1",
     "@types/webpack": "^4.1.4",
+    "@types/webpack-env": "^1.13.6",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^8.2.3",
     "babel-jest": "^22.4.3",

@@ -19,6 +19,6 @@
     "^routes(.*)$": "<rootDir>/src/routes/$1"
   },
   "setupFiles": [
-    "<rootDir>/src/tests/jestSetup.jsx"
+    "<rootDir>/src/tests/jestSetup.tsx"
   ]
 }

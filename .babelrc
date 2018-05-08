@@ -4,7 +4,6 @@
   "plugins": [
     "@babel/plugin-proposal-object-rest-spread",
     "@babel/plugin-syntax-dynamic-import",
-    "@babel/plugin-transform-typescript",
     "@babel/plugin-syntax-decorators",
     "@babel/plugin-transform-async-to-generator",
     "@babel/plugin-proposal-class-properties",

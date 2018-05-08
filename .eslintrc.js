@@ -50,7 +50,7 @@ module.exports = {
         "no-multi-spaces": 2,
         "object-curly-spacing": [2, "always"],
         "space-before-blocks": [2, { "functions": "always", "keywords": "always", "classes": "always" }],
-        "space-before-function-paren": [2, "never"],
+        "space-before-function-paren": [2, { "anonymous": "never", "named": "never", "asyncArrow": "always" }],
         
         "import/newline-after-import": [2, { "count": 2 }],
         // "import/order": ["error", {"newlines-between": "always-and-inside-groups"}],
