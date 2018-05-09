@@ -8,7 +8,8 @@ let currentApp = serverApp;
 server.listen(80);
 console.log("server started");
 
-if (module["hot"]) {
+
+if ((module as any).hot) {
     console.log("hot reloading is enabled");
 
     module.hot.accept("server/serverApp", () => {

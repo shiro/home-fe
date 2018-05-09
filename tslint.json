@@ -16,6 +16,7 @@
     "no-default-export": false,
     "no-require-imports": false,
     "no-implicit-dependencies": false,
+    "no-var-requires": false,
     "no-import-side-effect": false,
     "space-before-function-paren": false,
     "variable-name": false,

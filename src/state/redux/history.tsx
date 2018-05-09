@@ -11,7 +11,7 @@ switch(process.env.TARGET) {
     }
 }
 
-let history = History();
+const history = History();
 
 
 export default history;
