@@ -19,6 +19,7 @@
     "no-var-requires": false,
     "no-import-side-effect": false,
     "space-before-function-paren": false,
+    "interface-name": false,
     "variable-name": false,
     "curly": false,
     "no-consecutive-blank-lines": false,

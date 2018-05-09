@@ -1,13 +1,16 @@
 import AppRouter from "components/React/ServerAppRouter";
+import { NextFunction, Response } from "express";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { matchRoutes } from "react-router-config";
 import { END } from "redux-saga";
 
+
 import routes from "routes/routes";
+import { IRequest, IStaticContext } from "server/serverTypes";
 
 
-export default async (req, res, next) => {
+export default async (req: IRequest, res: Response, next: NextFunction) => {
     const { store, sagaPromise } = req;
 
     if (!store)
@@ -35,7 +38,7 @@ export default async (req, res, next) => {
         await Promise.all([...promises, sagaPromise.done]);
 
         //  static component context
-        const context = { req, res };
+        const context : IStaticContext = { req, res };
         const components = renderToString(<AppRouter context={context} store={store} location={req.url}/>);
 
         req.pageContent = components;

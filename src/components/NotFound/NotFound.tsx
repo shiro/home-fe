@@ -1,14 +1,22 @@
 import * as React from "react";
 
+import { IStaticContext } from "server/serverTypes";
 
-class NotFound extends React.Component<any, any> {
-    public render(): React.ReactNode {
-        if (this.props.staticContext)
-            this.props.staticContext.res.status(404);
 
-        return ("404 - Go elsewhere!");
-    }
+interface IProps {
+    staticContext?: IStaticContext;
 }
+
+const NotFound: React.SFC<IProps> = (props) => {
+    if (props.staticContext)
+        props.staticContext.res.status(404);
+
+    return (
+        <React.Fragment>
+            404 - Go elsewhere!
+        </React.Fragment>
+    );
+};
 
 
 export default NotFound;
