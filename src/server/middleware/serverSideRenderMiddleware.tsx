@@ -13,8 +13,11 @@ import { IRequest, IStaticContext } from "server/serverTypes";
 export default async (req: IRequest, res: Response, next: NextFunction) => {
     const { store, sagaPromise } = req;
 
-    if (!store)
-        return next();
+    if (!store) {
+        next();
+
+        return;
+    }
 
     //  filter all componends that need rendering and check for initialProps
     const pageComponentRoutes = matchRoutes(routes, req.url);
@@ -38,7 +41,7 @@ export default async (req: IRequest, res: Response, next: NextFunction) => {
         await Promise.all([...promises, sagaPromise.done]);
 
         //  static component context
-        const context : IStaticContext = { req, res };
+        const context: IStaticContext = { req, res };
         const components = renderToString(<AppRouter context={context} store={store} location={req.url}/>);
 
         req.pageContent = components;
@@ -47,7 +50,9 @@ export default async (req: IRequest, res: Response, next: NextFunction) => {
         console.error(err);
 
         next(err);
+
+        return;
     }
 
-    return next();
+    next();
 };

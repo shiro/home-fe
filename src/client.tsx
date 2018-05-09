@@ -18,7 +18,7 @@ window.onload = () => {
 };
 
 // hot swapping with WDS
-if((module as any).hot) {
+if(module.hot !== undefined) {
     module.hot.accept("components/React/ClientAppRouter", () => {
         const NewAppRouter = require("components/React/ClientAppRouter").default;
         renderApp(<NewAppRouter/>);

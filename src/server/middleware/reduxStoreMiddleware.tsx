@@ -11,5 +11,5 @@ export default (req: IRequest, res: Response, next: NextFunction) => {
     req.store = store;
     req.sagaPromise = sagaPromise;
 
-    return next();
+    next();
 };
