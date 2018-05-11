@@ -39,6 +39,7 @@
     "completed-docs": false,
     "max-line-length": [true, 140],
     "no-console": false,
+    "no-unnecessary-qualifier": false,
     "no-submodule-imports": false,
     "newline-per-chained-call": false,
     //    "one-line": false,

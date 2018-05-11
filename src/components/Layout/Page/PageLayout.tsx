@@ -1,11 +1,11 @@
 import * as React from "react";
-import { renderRoutes } from "react-router-config";
+import { renderRoutes, RouteConfig } from "react-router-config";
 
 import "components/Layout/Page/PageLayout.scss";
 
 
 interface IProps {
-    route: any;
+    route: RouteConfig;
 }
 
 const PageLayout: React.SFC<IProps> = ({ route }) => (

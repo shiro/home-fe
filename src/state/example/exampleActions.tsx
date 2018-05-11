@@ -1,18 +1,15 @@
+import { createAction } from "typesafe-actions";
+
+
 export const exampleActions = {
-    EDIT_MESSAGE: "EDIT_MESSAGE",
-    EDIT_MESSAGE_ASYNC: "EDIT_MESSAGE_ASYNC",
-};
-
-export const exampleActionCreators = {
-    editMessage: (message = "undefined") =>
+    editMessage: createAction("EDIT_MESSAGE", (message: string) =>
         ({
             message,
-            type: exampleActions.EDIT_MESSAGE,
-        }),
-
-    editMessageAsync: (message = "undefined") =>
+            type: "EDIT_MESSAGE",
+        })),
+    editMessageAsync: createAction("EDIT_MESSAGE_ASYNC", (message: string) =>
         ({
             message,
-            type: exampleActions.EDIT_MESSAGE_ASYNC,
-        }),
+            type: "EDIT_MESSAGE_ASYNC",
+        })),
 };

@@ -1,9 +1,9 @@
 import { routerMiddleware as createRouterMiddleware } from "react-router-redux";
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, createStore, Store as ReduxStore } from "redux";
 import createSagaMiddleware from "redux-saga";
 import history from "state/redux/history";
 
-import reducers from "state/redux/rootReducer";
+import { IRootState, rootReducer } from "state/redux/rootReducer";
 import rootSaga from "state/redux/rootSaga";
 
 
@@ -23,9 +23,10 @@ if (process.env.NODE_ENV === "development") {
     middleware = composeWithDevTools(middleware);
 }
 
-const Store = (initialState = {}) => {
-    const store = createStore(
-        reducers,
+
+export const Store = (initialState: IRootState | object = {}) => {
+    const store: ReduxStore<IRootState> = createStore(
+        rootReducer,
         initialState,
         middleware,
     );
@@ -33,6 +34,7 @@ const Store = (initialState = {}) => {
     // run the root saga
     const sagaPromise = sagaMiddleware.run(rootSaga);
 
+    // return store;
     return { store, sagaPromise };
 };
 

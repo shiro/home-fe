@@ -1,30 +1,47 @@
 import { expect } from "chai";
 import configureStore from "redux-mock-store";
+import { getType } from "typesafe-actions";
 
-import { exampleActionCreators, exampleActions } from "state/example/exampleActions";
-import { initialState } from "state/example/exampleReducers";
+import { exampleActions } from "state/example/exampleActions";
+import { exampleInitialState } from "state/example/exampleReducer";
+import * as exampleSelectors from "state/example/exampleSelectors";
+import { Store } from "state/redux/reduxStore";
 
 
-const mockStore = configureStore();
+const MockStore = configureStore();
 
-describe("example", () => {
+describe("example reducer", () => {
+    let mockStore;
     let store;
 
     beforeEach(() => {
-        store = mockStore(initialState);
+        mockStore = MockStore({});
+        store = Store().store;
+    });
+
+    it("gets the inital message", () => {
+        const expectedMessage = exampleInitialState.message;
+        const message = exampleSelectors.getMessage(store.getState());
+
+        expect(expectedMessage).equals(message);
     });
 
     it("updates message", () => {
-        const testString = "Rabbits are cute";
+        const testMessage = "Rabbits are cute";
+        const testAction = exampleActions.editMessage(testMessage);
 
-        store.dispatch(exampleActionCreators.editMessage(testString));
-        const actions = store.getActions();
+        mockStore.dispatch(testAction);
 
+        const actions = mockStore.getActions();
         const expectedActions = [{
-            message: testString,
-            type: exampleActions.EDIT_MESSAGE,
+            message: testMessage,
+            type: getType(exampleActions.editMessage),
         }];
 
         expect(actions).to.deep.equal(expectedActions);
+
+        store.dispatch(testAction);
+
+        expect(exampleSelectors.getMessage(store.getState())).to.equal(testMessage);
     });
 });

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import { exampleActionCreators } from "state/example/exampleActions";
+import { exampleActions } from "state/example/exampleActions";
 import * as exampleSelectors from "state/example/exampleSelectors";
 
 
@@ -15,7 +15,7 @@ interface IProps {
 
 export class HelloWorld extends React.Component<IProps, void> {
     public static fetchData(store) {
-        return store.dispatch(exampleActionCreators.editMessage("mounted server side"));
+        return store.dispatch(exampleActions.editMessage("mounted server side"));
     }
 
     public componentDidMount() {
@@ -38,7 +38,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(
-    exampleActionCreators,
+    exampleActions,
     dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(HelloWorld);

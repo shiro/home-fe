@@ -5,7 +5,6 @@ import { renderToString } from "react-dom/server";
 import { matchRoutes } from "react-router-config";
 import { END } from "redux-saga";
 
-
 import routes from "routes/routes";
 import { IRequest, IStaticContext } from "server/serverTypes";
 
@@ -25,7 +24,6 @@ export default async (req: IRequest, res: Response, next: NextFunction) => {
     // get data for each component where necessary
     const promises = pageComponentRoutes.map(({ route }) => {
         try {
-            // eslint-disable-next-line
             return route.component.fetchData(store);
         } catch (e) {
             return Promise.resolve(undefined);

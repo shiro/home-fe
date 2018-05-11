@@ -4,15 +4,16 @@ import React from "react";
 import configureStore from "redux-mock-store";
 
 import ConnectedHelloWorld from "components/HelloWorld/HelloWorld";
+import { IRootState } from "state/redux/rootReducer";
 
 
-const mockStore = configureStore();
+const mockStore = configureStore<IRootState>();
 
 describe("HelloWorld", () => {
     let store;
     let shallowWrapper;
 
-    const initialState = {
+    const initialState: IRootState = {
         example: { message: "hello rabbit" },
     };
 

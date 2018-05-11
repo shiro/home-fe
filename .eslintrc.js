@@ -26,6 +26,7 @@ module.exports = {
                 "no-unused-vars": 0,
                 "no-useless-constructor": 0,
                 "import/no-unresolved": 0,
+                "import/named": 0,
             }
         },
     ],
