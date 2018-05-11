@@ -6,14 +6,14 @@ import { exampleActions } from "state/example/exampleActions";
 import * as exampleSelectors from "state/example/exampleSelectors";
 
 
-interface IProps {
+export interface IHelloWorldProps {
     message: string;
 
     editMessage(msg: string): void;
     editMessageAsync(msg: string): void;
 }
 
-export class HelloWorld extends React.Component<IProps, void> {
+export class HelloWorld extends React.Component<IHelloWorldProps, void> {
     public static fetchData(store) {
         return store.dispatch(exampleActions.editMessage("mounted server side"));
     }

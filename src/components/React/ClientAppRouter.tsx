@@ -9,8 +9,8 @@ import history from "state/redux/history";
 import Store from "state/redux/reduxStore";
 
 //  create the store with the initial state we got
-const { store } = Store(
-    JSON.parse((window as IWindow).__INITIAL_STATE__));
+const initialState = (window as IWindow).__INITIAL_STATE__;
+const { store } = Store(initialState);
 
 
 const ClientAppRouter = () =>

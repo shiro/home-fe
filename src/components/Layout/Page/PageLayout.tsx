@@ -4,11 +4,11 @@ import { renderRoutes, RouteConfig } from "react-router-config";
 import "components/Layout/Page/PageLayout.scss";
 
 
-interface IProps {
+interface IPageLayoutProps {
     route: RouteConfig;
 }
 
-const PageLayout: React.SFC<IProps> = ({ route }) => (
+const PageLayout: React.SFC<IPageLayoutProps> = ({ route }) => (
     <div className="container">
         {renderRoutes(route.routes)}
     </div>

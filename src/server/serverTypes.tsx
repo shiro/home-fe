@@ -1,10 +1,11 @@
 import * as express from "express";
 import * as react from "react";
 import * as redux from "redux";
+import { IRootState } from "state/redux/rootReducer";
 
 
 export interface IWindow extends Window {
-    __INITIAL_STATE__?: string;
+    __INITIAL_STATE__?: IRootState | object;
 }
 
 export interface IRequest extends express.Request {
@@ -26,7 +27,3 @@ declare module "react" {
         fetchData?(store: redux.Store): any;
     }
 }
-
-// interface Foo extends RouteConfig{
-//     component?: React.ComponentType<RouteConfigComponentProps<any> | {}>;
-// }

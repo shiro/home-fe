@@ -3,11 +3,11 @@ import * as React from "react";
 import { IStaticContext } from "server/serverTypes";
 
 
-interface IProps {
+export interface INotFoundProps {
     staticContext?: IStaticContext;
 }
 
-const NotFound: React.SFC<IProps> = (props) => {
+const NotFound: React.SFC<INotFoundProps> = (props) => {
     if (props.staticContext)
         props.staticContext.res.status(404);
 
