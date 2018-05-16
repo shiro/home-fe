@@ -11,8 +11,10 @@
     "paths": {
       "server/*": ["src/server/*"],
       "components/*": ["src/components/*"],
+      "containers/*": ["src/containers/*"],
       "state/*": ["src/state/*"],
       "scss/*": ["src/scss/*"],
+      "style/*": ["src/style/*"],
       "api/*": ["src/api/*"],
       "routes/*": ["src/routes/*"]
     }

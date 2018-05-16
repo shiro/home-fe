@@ -69,8 +69,11 @@ module.exports = {
                 use: [
                     "style-loader",
                     {
-                        loader: "css-loader",
+                        loader: "typings-for-css-modules-loader",
                         options: {
+                            namedExport: true,
+                            camelCase: true,
+                            modules: true,
                             sourceMap: true,
                         },
                     },

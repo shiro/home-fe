@@ -1,16 +1,16 @@
 import { expect } from "chai";
 import { mount, shallow } from "enzyme";
 import React from "react";
-import configureStore from "redux-mock-store";
+import configureStore, { MockStore } from "redux-mock-store";
 
-import ConnectedHelloWorld from "components/HelloWorld/HelloWorld";
+import HelloContainer from "containers/HelloContainer/HelloContainer";
 import { IRootState } from "state/redux/rootReducer";
 
 
 const mockStore = configureStore<IRootState>();
 
 describe("HelloWorld", () => {
-    let store;
+    let store: MockStore<IRootState>;
     let shallowWrapper;
 
     const initialState: IRootState = {
@@ -19,8 +19,8 @@ describe("HelloWorld", () => {
 
     beforeEach(() => {
         store = mockStore(initialState);
-        shallowWrapper = shallow(<ConnectedHelloWorld store={store}/>);
-        mount(<ConnectedHelloWorld store={store}/>);
+        shallowWrapper = shallow(<HelloContainer store={store}/>);
+        mount(<HelloContainer store={store}/>);
     });
 
     // afterEach(() => {
@@ -33,10 +33,6 @@ describe("HelloWorld", () => {
 
     it("holds the message from the intial state in props", () => {
         expect(shallowWrapper.props().message).to.equal("hello rabbit");
-    });
-
-    it("displays the message from the initial state", () => {
-        expect(shallowWrapper.dive().find(".HelloWorld__msgBox").length).to.equal(1);
     });
 
     it("updates to new message after 1000ms", (done) => {

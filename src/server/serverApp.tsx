@@ -1,7 +1,5 @@
 import { default as express, Response } from "express";
-import reduxStoreMiddleware from "server/middleware/reduxStoreMiddleware";
 import renderTemplateMiddleware from "server/middleware/renderTemplateMiddleware";
-import serverSideRenderMiddleware from "server/middleware/serverSideRenderMiddleware";
 
 import { IRequest } from "server/serverTypes";
 
@@ -14,8 +12,8 @@ serverApp.use("/assets", express.static("dist"));
 
 // server everything else
 serverApp.get("*",
-    reduxStoreMiddleware,
-    serverSideRenderMiddleware,
+    // reduxStoreMiddleware,
+    // serverSideRenderMiddleware,
     renderTemplateMiddleware,
 );
 

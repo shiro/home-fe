@@ -5,20 +5,23 @@
     "ts",
     "tsx"
   ],
-  "transform": {
-    "^.+\\.jsx?$": "babel-jest",
-    "^.+\\.tsx?$": "ts-jest"
-  },
-  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$",
   "moduleNameMapper": {
     "^components(.*)$": "<rootDir>/src/components/$1",
+    "^containers(.*)$": "<rootDir>/src/containers/$1",
+    "^style(.*)$": "<rootDir>/src/style/$1",
     "^state(.*)$": "<rootDir>/src/state/$1",
     "^server(.*)$": "<rootDir>/src/server/$1",
     "^api(.*)$": "<rootDir>/src/api/$1",
     "^scss(.*)$": "<rootDir>/src/scss/$1",
     "^routes(.*)$": "<rootDir>/src/routes/$1"
   },
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest",
+    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.scss$": "<rootDir>/test/__mocks__/style.js"
+  },
+  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$",
   "setupFiles": [
-    "<rootDir>/src/tests/jestSetup.tsx"
+    "<rootDir>/test/jestSetup.tsx"
   ]
 }

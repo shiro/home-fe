@@ -8,7 +8,7 @@ const renderApp = (app) => {
     const root = document.getElementById("app");
 
     // render or hydrate depending on SSR being enabled or not
-    const method = root.children.length === 0 ? hydrate : render;
+    const method = root.children.length === 0 ? render : hydrate;
 
     method.call(this, app, root);
 };
@@ -18,7 +18,7 @@ window.onload = () => {
 };
 
 // hot swapping with WDS
-if(module.hot !== undefined) {
+if (module.hot !== undefined) {
     module.hot.accept("components/React/ClientAppRouter", () => {
         const NewAppRouter = require("components/React/ClientAppRouter").default;
         renderApp(<NewAppRouter/>);

@@ -44,6 +44,7 @@
     "newline-per-chained-call": false,
     //    "one-line": false,
     "typedef": false,
+    "prefer-function-over-method": false,
     "indent": [true, "spaces", 4],
     "align": false,
     "strict-type-predicates": false,

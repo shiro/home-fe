@@ -1,15 +1,17 @@
-import HelloWorld from "components/HelloWorld/HelloWorld";
-import PageLayout from "components/Layout/Page/PageLayout";
+import { RouteConfig } from "react-router-config";
+
+import PageLayout from "components/Layout/PageLayout/PageLayout";
 import NotFound from "components/NotFound/NotFound";
+import HelloContainer from "containers/HelloContainer/HelloContainer";
 
 
-const routes =
+const routes: RouteConfig[] =
     [{
         component: PageLayout,
         routes:
             [
                 {
-                    component: HelloWorld,
+                    component: HelloContainer,
                     exact: true,
                     path: "/",
                 },
