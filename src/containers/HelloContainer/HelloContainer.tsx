@@ -33,7 +33,6 @@ interface IStateProps {
     message: string;
 }
 
-
 const mapStateToProps = (state: IRootState): IStateProps => ({
     message: exampleSelectors.getMessage(state),
 });

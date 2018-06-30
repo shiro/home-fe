@@ -42,3 +42,4 @@ declare module "react-router" {
         route?: RouteConfig;
     }
 }
+

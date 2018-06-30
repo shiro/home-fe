@@ -55,7 +55,22 @@ module.exports = {
             },
             {
                 test: /\.(sass|scss)$/,
-                use: "null-loader",
+                use: [
+                    {
+                        loader: "css-loader/locals",
+                        options: {
+                            camelCase: true,
+                            modules: true,
+                            sourceMap: true,
+                        },
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                ],
             },
         ],
     },
