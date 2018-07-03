@@ -8,6 +8,7 @@ import { IWindow } from "server/serverTypes";
 import history from "state/redux/history";
 import Store from "state/redux/reduxStore";
 
+
 //  create the store with the initial state we got
 const initialState = (window as IWindow).__INITIAL_STATE__;
 const { store } = Store(initialState);
