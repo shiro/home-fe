@@ -1,5 +1,4 @@
 import * as express from "express";
-import * as react from "react";
 import { RouteConfig } from "react-router-config";
 import * as redux from "redux";
 import { IRootState } from "state/redux/rootReducer";
@@ -21,7 +20,11 @@ export interface IStaticContext {
 }
 
 declare module "react" {
-    interface ComponentClass<P = {}> extends react.StaticLifecycle<P, any> {
+    // interface Component<P = {}, S = {}, SS = any> extends ComponentLifecycle<P, S, SS> {
+    //     fetchData?(store: redux.Store<IRootState>): any;
+    // }
+
+    interface ComponentClass<P = {}> extends React.StaticLifecycle<P, any> {
         fetchData?(store: redux.Store<IRootState>): any;
     }
 

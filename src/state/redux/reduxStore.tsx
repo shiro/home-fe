@@ -3,7 +3,7 @@ import { applyMiddleware, createStore, Store as ReduxStore } from "redux";
 import createSagaMiddleware from "redux-saga";
 import history from "state/redux/history";
 
-import { IRootState, rootReducer } from "state/redux/rootReducer";
+import { IRootAction, IRootState, rootReducer } from "state/redux/rootReducer";
 import rootSaga from "state/redux/rootSaga";
 
 
@@ -24,8 +24,8 @@ if (process.env.NODE_ENV === "development") {
 }
 
 
-export const Store = (initialState: IRootState | object = {}) => {
-    const store: ReduxStore<IRootState> = createStore(
+export const Store = (initialState: IRootState = {}) => {
+    const store: ReduxStore<IRootState, IRootAction> = createStore(
         connectRouter(history)(rootReducer),
         initialState,
         middleware,

@@ -10,7 +10,7 @@ import { IRootState } from "state/redux/rootReducer";
 
 type IProps = IStateProps & IDispatchProps;
 
-export class HelloContainer extends React.Component<IProps, void> {
+export class HelloContainer extends React.Component<IProps> {
     public static fetchData(store) {
         return store.dispatch(exampleActions.editMessage("mounted server side"));
     }
@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
     ...exampleActions,
 }, dispatch);
 
-export default connect<IStateProps, IDispatchProps>(
+export default connect(
     mapStateToProps, mapDispatchToProps)(
     HelloContainer,
 );

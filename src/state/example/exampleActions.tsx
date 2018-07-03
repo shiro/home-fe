@@ -1,15 +1,19 @@
-import { createAction } from "typesafe-actions";
+import { ActionType, createAction } from "typesafe-actions";
 
 
 export const exampleActions = {
-    editMessage: createAction("EDIT_MESSAGE", (message: string) =>
-        ({
-            message,
-            type: "EDIT_MESSAGE",
-        })),
-    editMessageAsync: createAction("EDIT_MESSAGE_ASYNC", (message: string) =>
-        ({
-            message,
-            type: "EDIT_MESSAGE_ASYNC",
-        })),
+    editMessage: createAction("EDIT_MESSAGE", (resolve) =>
+        (message: string) =>
+            resolve({
+                message,
+            }),
+    ),
+    editMessageAsync: createAction("EDIT_MESSAGE_ASYNC", (resolve) =>
+        (message: string) =>
+            resolve({
+                message,
+            }),
+    ),
 };
+
+export type IExampleAction = ActionType<typeof exampleActions>;

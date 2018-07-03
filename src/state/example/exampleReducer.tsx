@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { exampleActions } from "state/example/exampleActions";
+import { exampleActions, IExampleAction } from "state/example/exampleActions";
 import { getType } from "typesafe-actions";
 
 
@@ -11,10 +11,11 @@ export const exampleInitialState: IExampleState = {
     message: "hello rabbits",
 };
 
-export const exampleReducer: Reducer<IExampleState> = (state = exampleInitialState, action) => {
+export const exampleReducer: Reducer<IExampleState, IExampleAction> = (state = exampleInitialState, action) => {
     switch (action.type) {
         case getType(exampleActions.editMessage): {
-            const message = action.message;
+            const { message } = action.payload;
+            console.log(message);
 
             return { ...state, message };
         }
