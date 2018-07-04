@@ -34,8 +34,9 @@ describe("example reducer", () => {
 
         const actions = mockStore.getActions();
         const expectedActions = [{
-            message: testMessage,
             type: getType(exampleActions.editMessage),
+            meta: undefined,
+            payload: testMessage,
         }];
 
         expect(actions).to.deep.equal(expectedActions);
