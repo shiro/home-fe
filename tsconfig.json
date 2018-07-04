@@ -3,6 +3,7 @@
     "target": "es6",
     "module": "es6", // specify module code generation
     "jsx": "react", // use typescript to transpile jsx to js
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "moduleResolution": "node",
