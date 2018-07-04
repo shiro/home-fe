@@ -19,8 +19,8 @@ describe("HelloWorld", () => {
 
     beforeEach(() => {
         store = mockStore(initialState);
-        shallowWrapper = shallow(<HelloContainer/>);
-        mount(<HelloContainer/>);
+        shallowWrapper = shallow(<HelloContainer store={store}/>);
+        mount(<HelloContainer store={store}/>);
     });
 
     // afterEach(() => {

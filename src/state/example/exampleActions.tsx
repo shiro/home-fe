@@ -1,13 +1,8 @@
-import { ActionType, createAction } from "typesafe-actions";
+import { ActionType, createAction, createStandardAction } from "typesafe-actions";
 
 
 export const exampleActions = {
-    editMessage: createAction("EDIT_MESSAGE", (resolve) =>
-        (message: string) =>
-            resolve({
-                message,
-            }),
-    ),
+    editMessage: createStandardAction("EDIT_MESSAGE")<string>(),
     editMessageAsync: createAction("EDIT_MESSAGE_ASYNC", (resolve) =>
         (message: string) =>
             resolve({

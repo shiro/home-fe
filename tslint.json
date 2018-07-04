@@ -18,6 +18,8 @@
     "no-implicit-dependencies": false,
     "no-var-requires": false,
     "no-import-side-effect": false,
+    "object-literal-sort-keys": false,
+    "member-ordering": false,
     "space-before-function-paren": false,
     "interface-name": false,
     "variable-name": false,

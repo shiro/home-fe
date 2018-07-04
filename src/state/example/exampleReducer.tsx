@@ -14,7 +14,7 @@ export const exampleInitialState: IExampleState = {
 export const exampleReducer: Reducer<IExampleState, IExampleAction> = (state = exampleInitialState, action) => {
     switch (action.type) {
         case getType(exampleActions.editMessage): {
-            const { message } = action.payload;
+            const message = action.payload;
             console.log(message);
 
             return { ...state, message };

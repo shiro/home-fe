@@ -30,19 +30,10 @@ describe("example reducer", () => {
         const testMessage = "Rabbits are cute";
         const testAction = exampleActions.editMessage(testMessage);
 
-        mockStore.dispatch(testAction);
-
-        const actions = mockStore.getActions();
-        const expectedActions = [{
-            type: getType(exampleActions.editMessage),
-            meta: undefined,
-            payload: testMessage,
-        }];
-
-        expect(actions).to.deep.equal(expectedActions);
-
         store.dispatch(testAction);
 
-        expect(exampleSelectors.getMessage(store.getState())).to.equal(testMessage);
+        const storeMessage = exampleSelectors.getMessage(store.getState());
+
+        expect(storeMessage).to.equal(testMessage);
     });
 });
