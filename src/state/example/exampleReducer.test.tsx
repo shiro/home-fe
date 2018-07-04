@@ -1,6 +1,4 @@
 import { expect } from "chai";
-import configureStore from "redux-mock-store";
-import { getType } from "typesafe-actions";
 
 import { exampleActions } from "state/example/exampleActions";
 import { exampleInitialState } from "state/example/exampleReducer";
@@ -8,14 +6,10 @@ import * as exampleSelectors from "state/example/exampleSelectors";
 import { Store } from "state/redux/reduxStore";
 
 
-const MockStore = configureStore();
-
 describe("example reducer", () => {
-    let mockStore;
     let store;
 
     beforeEach(() => {
-        mockStore = MockStore({});
         store = Store().store;
     });
 
