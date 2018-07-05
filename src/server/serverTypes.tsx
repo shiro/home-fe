@@ -1,4 +1,5 @@
 import * as express from "express";
+import { StaticContext } from "react-router";
 import { RouteConfig } from "react-router-config";
 import * as redux from "redux";
 import { IRootState } from "state/redux/rootReducer";
@@ -43,6 +44,15 @@ declare module "react" {
 declare module "react-router" {
     export interface RouteComponentProps<P, C extends StaticContext = StaticContext> {
         route?: RouteConfig;
+    }
+}
+
+// allow components to have a store prop
+declare global {
+    namespace JSX {
+        export interface IntrinsicAttributes {
+            store?: redux.Store;
+        }
     }
 }
 

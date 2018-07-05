@@ -1,10 +1,11 @@
 import { expect } from "chai";
-import { mount, shallow } from "enzyme";
+import { shallow } from "enzyme";
 import React from "react";
 import configureStore, { MockStore } from "redux-mock-store";
 
 import HelloContainer from "containers/HelloContainer/HelloContainer";
-import { IRootState } from "state/redux/rootReducer";
+import { getMessage } from "state/example/exampleSelectors";
+import { IRootState, rootIntialState } from "state/redux/rootReducer";
 
 
 const mockStore = configureStore<IRootState>();
@@ -13,26 +14,24 @@ describe("HelloWorld", () => {
     let store: MockStore<IRootState>;
     let shallowWrapper;
 
-    const initialState: IRootState = {
-        example: { message: "hello rabbit" },
-    };
-
     beforeEach(() => {
-        store = mockStore(initialState);
-        shallowWrapper = shallow(<HelloContainer store={store}/>);
-        mount(<HelloContainer store={store}/>);
-    });
+        store = mockStore(rootIntialState);
 
-    // afterEach(() => {
-    //
-    // });
+        shallowWrapper = shallow(
+            <HelloContainer store={store}/>,
+        ).dive();
+    });
 
     it("renders the component", () => {
         expect(shallowWrapper.length).to.equal(1);
     });
 
     it("holds the message from the intial state in props", () => {
-        expect(shallowWrapper.props().message).to.equal("hello rabbit");
+        const expectedMessage = getMessage(rootIntialState);
+
+        const message = shallowWrapper.props().message;
+
+        expect(message).to.equal(expectedMessage);
     });
 
     it("updates to new message after 1000ms", (done) => {
