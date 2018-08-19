@@ -1,46 +1,34 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const HtmlWebpackHarddiskPlugin = require("html-webpack-harddisk-plugin");
+const autoprefixer = require("autoprefixer");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const HappyPack = require("happypack");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
-const { appRoot, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack");
-const webpackBase = require("./client.prod.config");
+const { appRoot, pathResolver, stats, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack.config");
 
 
 module.exports = {
-    ...webpackBase,
-    mode: "development",
-    devtool: "inline-source-map",
-    watchOptions: {
-        aggregateTimeout: 300,
-        poll: true,
-    },
+    name: "client",
+    mode: "production",
+    devtool: "source-map",
+    stats,
     entry: [
         "@babel/polyfill",
         path.join(appRoot, "src/client"),
         path.join(appRoot, "src/scss/app.scss"),
     ],
-    devServer: {
-        contentBase: path.join(appRoot, "dist"),
-        hot: true,
-        compress: true,
-        //  historyApiFallback: true,
-        disableHostCheck: true,
-        inline: true,
-        proxy: [{
-            context: ["**"],
-            target: "http://localhost:80",
-        }],
-        host: "0.0.0.0",
-        stats: webpackBase.stats,
-        port: 8080,
-        // contentBase: path.join(appRoot, "assets") // proxy stuff url,
-        publicPath: "/assets/", // wds resources url
+    output: {
+        filename: "[name].js",
+        path: webpackPaths.clientDest,
+        publicPath: "/assets/",
     },
+    resolve: pathResolver,
     module: {
         rules: [
             {
@@ -56,7 +44,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(js|jsx)$/,
+                test: /\.jsx$/,
                 include: appRoot,
                 exclude: /node_modules/,
                 use: {
@@ -67,15 +55,23 @@ module.exports = {
             {
                 test: /\.(sass|scss)$/,
                 use: [
-                    "style-loader",
+                    MiniCssExtractPlugin.loader,
                     {
-                        loader: "typings-for-css-modules-loader",
+                        loader: "css-loader",
                         options: {
-                            namedExport: true,
                             camelCase: true,
                             modules: true,
                             sourceMap: true,
+                            minimize: true,
                         },
+                    },
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            plugins: function() {
+                                return [autoprefixer];
+                            }
+                        }
                     },
                     {
                         loader: "sass-loader",
@@ -87,7 +83,27 @@ module.exports = {
             },
         ],
     },
-    optimization: {}, // override production optimizations
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true,
+            }),
+            new OptimizeCSSAssetsPlugin({}),
+        ],
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: "initial",
+                    name: "vendor",
+                    priority: 10,
+                    enforce: true,
+                }
+            },
+        },
+    },
     plugins: [
         new HappyPack({
             id: "ts",
@@ -106,17 +122,19 @@ module.exports = {
         new CopyWebpackPlugin([{
             from: webpackPaths.assetSrc,
         }]),
+        new MiniCssExtractPlugin({
+            filename: "[name].[hash].css",
+            chunkFilename: "[id].[hash].css",
+        }),
         new HtmlWebpackPlugin({
             template: path.join(webpackPaths.templateSrc, webpackFiles.htmlTemplateSrc),
             filename: webpackFiles.htmlTemplateDest,
             inject: "body",
-            alwaysWriteToDisk: true,
         }),
-        new HtmlWebpackHarddiskPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
-            "process.env.NODE_ENV": JSON.stringify("development"),
+            "process.env.NODE_ENV": JSON.stringify("production"),
             "process.env.TARGET": JSON.stringify("client"),
         }),
     ],
 };
+

@@ -16,6 +16,7 @@
       "state/*": ["src/state/*"],
       "scss/*": ["src/scss/*"],
       "style/*": ["src/style/*"],
+      "models/*": ["src/models/*"],
       "api/*": ["src/api/*"],
       "routes/*": ["src/routes/*"]
     }

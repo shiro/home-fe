@@ -1,33 +1,46 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackHarddiskPlugin = require("html-webpack-harddisk-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const HappyPack = require("happypack");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
-const { appRoot, pathResolver, stats, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack");
+const { appRoot, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack.config");
+const webpackBase = require("./webpack.client.prod.config");
 
 
 module.exports = {
-    name: "client",
-    mode: "production",
-    devtool: "source-map",
-    stats,
+    ...webpackBase,
+    mode: "development",
+    devtool: "inline-source-map",
+    watchOptions: {
+        aggregateTimeout: 300,
+        poll: true,
+    },
     entry: [
         "@babel/polyfill",
         path.join(appRoot, "src/client"),
         path.join(appRoot, "src/scss/app.scss"),
     ],
-    output: {
-        filename: "bundle-[hash].js",
-        path: webpackPaths.clientDest,
-        publicPath: "/assets/",
+    devServer: {
+        contentBase: path.join(appRoot, "dist"),
+        hot: true,
+        compress: true,
+        //  historyApiFallback: true,
+        disableHostCheck: true,
+        inline: true,
+        proxy: [{
+            context: ["**"],
+            target: "http://localhost:80",
+        }],
+        host: "0.0.0.0",
+        stats: webpackBase.stats,
+        port: 8080,
+        // contentBase: path.join(appRoot, "assets") // proxy stuff url,
+        publicPath: "/assets/", // wds resources url
     },
-    resolve: pathResolver,
     module: {
         rules: [
             {
@@ -43,7 +56,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.jsx$/,
+                test: /\.(js|jsx)$/,
                 include: appRoot,
                 exclude: /node_modules/,
                 use: {
@@ -54,14 +67,14 @@ module.exports = {
             {
                 test: /\.(sass|scss)$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    "style-loader",
                     {
-                        loader: "css-loader",
+                        loader: "typings-for-css-modules-loader",
                         options: {
+                            namedExport: true,
                             camelCase: true,
                             modules: true,
                             sourceMap: true,
-                            minimize: true,
                         },
                     },
                     {
@@ -74,23 +87,16 @@ module.exports = {
             },
         ],
     },
-    optimization: {
-        minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true,
-            }),
-            new OptimizeCSSAssetsPlugin({}),
-        ],
+    optimization: { // override production optimizations
         splitChunks: {
             cacheGroups: {
                 vendor: {
+                    test: /[\\/]node_modules[\\/]/,
                     chunks: "initial",
-                    test: path.resolve(__dirname, "node_modules"),
                     name: "vendor",
+                    priority: 10,
                     enforce: true,
-                },
+                }
             },
         },
     },
@@ -112,19 +118,17 @@ module.exports = {
         new CopyWebpackPlugin([{
             from: webpackPaths.assetSrc,
         }]),
-        new MiniCssExtractPlugin({
-            filename: "[name].[hash].css",
-            chunkFilename: "[id].[hash].css",
-        }),
         new HtmlWebpackPlugin({
             template: path.join(webpackPaths.templateSrc, webpackFiles.htmlTemplateSrc),
             filename: webpackFiles.htmlTemplateDest,
             inject: "body",
+            alwaysWriteToDisk: true,
         }),
+        new HtmlWebpackHarddiskPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
-            "process.env.NODE_ENV": JSON.stringify("production"),
+            "process.env.NODE_ENV": JSON.stringify("development"),
             "process.env.TARGET": JSON.stringify("client"),
         }),
     ],
 };
-

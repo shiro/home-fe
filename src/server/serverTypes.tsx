@@ -18,6 +18,7 @@ export interface IRequest extends express.Request {
 export interface IStaticContext {
     req: IRequest;
     res: express.Response;
+    statusCode?: number;
 }
 
 declare module "react" {

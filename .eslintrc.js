@@ -32,7 +32,7 @@ module.exports = {
     ],
     "settings": {
         "import/resolver": {
-            "webpack": { "config": path.join(appRoot, "./webpack/client.prod.config.js") }
+            "webpack": { "config": path.join(appRoot, "./webpack/webpack.client.prod.config.js") }
         }
     },
     "env": {

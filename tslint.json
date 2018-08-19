@@ -10,6 +10,7 @@
     "max-classes-per-file": false,
     "one-line": false,
     "cyclomatic-complexity": false,
+    "file-name-casing": false,
     "no-parameter-properties": false,
     //    "no-unused-variable": false,
     "no-magic-numbers": false,

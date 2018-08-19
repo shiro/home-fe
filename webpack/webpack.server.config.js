@@ -5,8 +5,8 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HappyPack = require("happypack");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
-const { appRoot, webpackPaths, webpackFiles } = require("../config/webpack");
-const webpackBase = require("./server.prod.config");
+const { appRoot, webpackPaths, webpackFiles } = require("../config/webpack.config");
+const webpackBase = require("./webpack.server.prod.config");
 
 
 module.exports = {

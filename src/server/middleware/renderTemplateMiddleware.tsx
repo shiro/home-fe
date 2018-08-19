@@ -1,4 +1,4 @@
-import serverConfig from "config/server";
+import serverConfig from "config/server.config";
 import { Response } from "express";
 import fs from "fs";
 import path from "path";
@@ -21,9 +21,9 @@ export default (req: IRequest, res: Response) => {
         const stateString = "window.__INITIAL_STATE__";
         page = page.replace(stateString, `${stateString} = ${JSON.stringify(store.getState())}`);
 
-        // Inserts server-side rendered data
-        if (pageContent !== undefined)
-            page = page.replace("{CONTENT}", pageContent);
+        // insert the server-side rendered data
+        if (pageContent)
+            page = page.replace("<!--REACT ROOT-->", pageContent);
     }
 
     res.send(page);

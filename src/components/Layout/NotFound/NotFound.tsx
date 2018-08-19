@@ -1,13 +1,12 @@
 import * as React from "react";
+import { RouteComponentProps } from "react-router";
 
 import { IStaticContext } from "server/serverTypes";
 
 
-export interface INotFoundProps {
-    staticContext?: IStaticContext;
-}
+type IProps = RouteComponentProps<{}, IStaticContext>;
 
-const NotFound: React.SFC<INotFoundProps> = (props) => {
+const NotFound: React.SFC<IProps> = (props) => {
     if (props.staticContext)
         props.staticContext.res.status(404);
 

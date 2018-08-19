@@ -8,7 +8,15 @@ const appRoot = path.join(__dirname, "..");
 module.exports.appRoot = appRoot;
 
 module.exports.babelOptions = {
-    presets: [["@babel/env", { modules: false }], "@babel/react"],
+    presets: [
+        ["@babel/env", {
+            modules: false,
+            targets: {
+                browsers: ["last 1 version", "ie >= 11"]
+            }
+        }],
+        "@babel/react"
+    ],
 };
 
 module.exports.pathResolver = {
