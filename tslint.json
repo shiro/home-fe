@@ -12,7 +12,7 @@
     "cyclomatic-complexity": false,
     "file-name-casing": false,
     "no-parameter-properties": false,
-    //    "no-unused-variable": false,
+    "no-unused-variable": false,
     "no-magic-numbers": false,
     "no-default-export": false,
     "no-require-imports": false,

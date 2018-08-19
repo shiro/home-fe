@@ -1,6 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { StaticRouter, withRouter } from "react-router";
+import { StaticRouter } from "react-router";
 
 import MainPage from "components/Layout/MainPage";
 

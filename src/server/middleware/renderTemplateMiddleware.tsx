@@ -22,7 +22,7 @@ export default (req: IRequest, res: Response) => {
         page = page.replace(stateString, `${stateString} = ${JSON.stringify(store.getState())}`);
 
         // insert the server-side rendered data
-        if (pageContent)
+        if (pageContent !== null)
             page = page.replace("<!--REACT ROOT-->", pageContent);
     }
 

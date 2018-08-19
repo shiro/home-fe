@@ -1,5 +1,4 @@
 import * as express from "express";
-import { StaticContext } from "react-router";
 import { RouteConfig } from "react-router-config";
 import * as redux from "redux";
 import { IRootState } from "state/redux/rootReducer";
