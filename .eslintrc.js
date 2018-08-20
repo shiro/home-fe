@@ -35,7 +35,7 @@ module.exports = {
             "version": "16.4.1",
         },
         "import/resolver": {
-            "webpack": { "config": path.join(appRoot, "./webpack/webpack.client.prod.config.js") }
+            "webpack": { "config": path.join(appRoot, "./config/webpack.config.js") }
         }
     },
     "env": {
