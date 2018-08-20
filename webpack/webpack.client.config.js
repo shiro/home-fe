@@ -4,10 +4,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackHarddiskPlugin = require("html-webpack-harddisk-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const HappyPack = require("happypack");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const { appRoot, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack.config");
+const { helpers } = require("./webpack.shared");
+
 const webpackBase = require("./webpack.client.prod.config");
 
 
@@ -47,13 +48,7 @@ module.exports = {
                 test: /\.tsx$/,
                 include: appRoot,
                 exclude: /node_modules/,
-                use: [
-                    {
-                        loader: "babel-loader",
-                        options: babelOptions,
-                    },
-                    "happypack/loader?id=ts",
-                ],
+                use: "happypack/loader?id=ts",
             },
             {
                 test: /\.(js|jsx)$/,
@@ -66,24 +61,7 @@ module.exports = {
             },
             {
                 test: /\.(sass|scss)$/,
-                use: [
-                    "style-loader",
-                    {
-                        loader: "typings-for-css-modules-loader",
-                        options: {
-                            namedExport: true,
-                            camelCase: true,
-                            modules: true,
-                            sourceMap: true,
-                        },
-                    },
-                    {
-                        loader: "sass-loader",
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                ],
+                use: "happypack/loader?id=sass",
             },
         ],
     },
@@ -101,16 +79,32 @@ module.exports = {
         },
     },
     plugins: [
-        new HappyPack({
-            id: "ts",
-            threads: 2,
-            loaders: [
-                {
-                    path: "ts-loader",
-                    query: { happyPackMode: true },
+        helpers.happyPack("ts", [
+            {
+                loader: "babel-loader",
+                options: babelOptions,
+            },
+            {
+                loader: "ts-loader",
+                query: { happyPackMode: true },
+            },
+        ]),
+        helpers.happyPack("sass", [
+            "style-loader",
+            {
+                loader: "typings-for-css-modules-loader",
+                query: {
+                    namedExport: true,
+                    camelCase: true,
+                    modules: true,
+                    sourceMap: true,
                 },
-            ],
-        }),
+            },
+            {
+                loader: "sass-loader",
+                query: { sourceMap: true },
+            },
+        ]),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
         new CleanWebpackPlugin([webpackPaths.clientDest], {
             root: webpackPaths.appRoot,

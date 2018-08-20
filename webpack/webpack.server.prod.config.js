@@ -6,6 +6,7 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const webpack = require("webpack");
 
 const { appRoot, pathResolver, stats, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack.config");
+const { helpers } = require("./webpack.shared");
 
 
 module.exports = {
@@ -36,13 +37,7 @@ module.exports = {
                 test: /\.tsx$/,
                 include: appRoot,
                 exclude: /node_modules/,
-                use: [
-                    {
-                        loader: "babel-loader",
-                        options: babelOptions,
-                    },
-                    "happypack/loader?id=ts",
-                ],
+                use: "happypack/loader?id=ts",
             },
             {
                 test: /\.jsx$/,
@@ -66,9 +61,7 @@ module.exports = {
                     },
                     {
                         loader: "sass-loader",
-                        options: {
-                            sourceMap: true,
-                        },
+                        options: { sourceMap: true },
                     },
                 ],
             },
@@ -84,16 +77,12 @@ module.exports = {
         ],
     },
     plugins: [
-        new HappyPack({
-            id: "ts",
-            threads: 2,
-            loaders: [
-                {
-                    path: "ts-loader",
-                    query: { happyPackMode: true },
-                },
-            ],
-        }),
+        helpers.happyPack("ts", [
+            {
+                path: "ts-loader",
+                query: { happyPackMode: true },
+            },
+        ]),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
         new CleanWebpackPlugin([webpackPaths.serverDest], {
             root: webpackPaths.appRoot,

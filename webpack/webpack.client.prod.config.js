@@ -11,6 +11,7 @@ const HappyPack = require("happypack");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const { appRoot, pathResolver, stats, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack.config");
+const { helpers } = require("./webpack.shared");
 
 
 module.exports = {
@@ -35,13 +36,7 @@ module.exports = {
                 test: /\.tsx$/,
                 include: appRoot,
                 exclude: /node_modules/,
-                use: [
-                    {
-                        loader: "babel-loader",
-                        options: babelOptions,
-                    },
-                    "happypack/loader?id=ts",
-                ],
+                use: "happypack/loader?id=ts",
             },
             {
                 test: /\.jsx$/,
@@ -105,16 +100,16 @@ module.exports = {
         },
     },
     plugins: [
-        new HappyPack({
-            id: "ts",
-            threads: 2,
-            loaders: [
-                {
-                    path: "ts-loader",
-                    query: { happyPackMode: true },
-                },
-            ],
-        }),
+        helpers.happyPack("ts", [
+            {
+                loader: "babel-loader",
+                query: babelOptions,
+            },
+            {
+                loader: "ts-loader",
+                query: { happyPackMode: true },
+            },
+        ]),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
         new CleanWebpackPlugin([webpackPaths.clientDest], {
             root: webpackPaths.appRoot,

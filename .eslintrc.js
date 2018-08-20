@@ -45,6 +45,7 @@ module.exports = {
         "browser": true
     },
     "rules": {
+        "no-unused-vars": 0,
         "no-console": 0,
         "semi": [2, "always"],
         "quotes": [2, "double", { "avoidEscape": true }],
