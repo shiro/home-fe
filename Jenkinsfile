@@ -25,6 +25,8 @@ node {
             }
         }
     } finally {
+        cobertura coberturaReportFile: 'report/cobertura/*.xml'
+        junit 'report/junit/*.xml'
         checkstyle pattern: 'report/checkstyle/*.xml'
 
         if (!IS_DEV) { // only keep master builds for cache

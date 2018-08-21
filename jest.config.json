@@ -17,13 +17,13 @@
   },
   "reporters": [
     "default",
-    ["jest-junit", {"output": "report/junit.xml"}]
+    ["jest-junit", {"output": "report/junit/jest.xml"}]
   ],
   "coverageReporters": [
     "text",
     "cobertura"
   ],
-  "coverageDirectory": "report",
+  "coverageDirectory": "report/cobertura",
   "transform": {
     "^.+\\.jsx?$": "babel-jest",
     "^.+\\.tsx?$": "ts-jest",
