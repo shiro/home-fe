@@ -25,6 +25,8 @@ node {
             }
         }
     } finally {
+        checkstyle pattern: 'report/checkstyle/*.xml'
+
         if (!IS_DEV) { // only keep master builds for cache
             echo 'Removing docker image'
             sh "docker rmi ${devApp.id} 2>/dev/null"

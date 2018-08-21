@@ -18,9 +18,9 @@
     "lint:report": "concurrently \"yarn lint:es:report\" \"yarn lint:ts:report\"",
     "lint:fix": "concurrently \"yarn lint:es:fix\" \"yarn lint:ts:fix\"",
     "lint:es": "eslint --ext js,jsx,ts,tsx src",
-    "lint:es:report": "yarn run lint:es -f checkstyle -o report/eslint.xml",
+    "lint:es:report": "yarn run lint:es -f checkstyle -o report/checkstyle/eslint.xml",
     "lint:ts": "tslint -p .",
-    "lint:ts:report": "yarn run lint:ts -t checkstyle -o report/tslint.xml",
+    "lint:ts:report": "yarn run lint:ts -t checkstyle -o report/checkstyle/tslint.xml",
     "lint:es:fix": "yarn lint:es --fix",
     "lint:ts:fix": "yarn lint:ts --fix"
   },

@@ -3,3 +3,5 @@ dist/
 dist_server/
 
 yarn-error.log
+
+report/
