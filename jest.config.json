@@ -15,6 +15,15 @@
     "^scss(.*)$": "<rootDir>/src/scss/$1",
     "^routes(.*)$": "<rootDir>/src/routes/$1"
   },
+  "reporters": [
+    "default",
+    ["jest-junit", {"output": "report/junit.xml"}]
+  ],
+  "coverageReporters": [
+    "text",
+    "cobertura"
+  ],
+  "coverageDirectory": "report",
   "transform": {
     "^.+\\.jsx?$": "babel-jest",
     "^.+\\.tsx?$": "ts-jest",
