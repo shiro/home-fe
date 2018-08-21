@@ -6,7 +6,6 @@ node {
     def IS_MASTER = "${BRANCH}" == "master"
     def IS_DEV = "${BRANCH}" == "dev"
 
-
     def devApp
 
     stage('Build nightly') {
@@ -17,8 +16,12 @@ node {
     try {
         stage('Test nightly') {
             devApp.inside {
-                sh 'cd /opt/app && yarn lint'
-                sh 'cd /opt/app && yarn test'
+                sh ''' 
+                   ln -s /opt/app/node_modules .
+                   yarn test:report
+                   yarn lint:report
+                   rm node_modules
+                   '''
             }
         }
     } finally {

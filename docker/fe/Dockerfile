@@ -8,7 +8,7 @@ WORKDIR /opt/app/
 COPY package.json yarn.lock ./
 
 RUN yarn --check-files --frozen-lockfile && \
-    chmod -R 777 node_modules
+    chmod -R 777 .
 
 COPY . ./
 
