@@ -27,10 +27,10 @@
   "transform": {
     "^.+\\.jsx?$": "babel-jest",
     "^.+\\.tsx?$": "ts-jest",
-    "^.+\\.scss$": "<rootDir>/test/__mocks__/style.js"
+    "^.+\\.scss$": "<rootDir>/jest/__mocks__/style.js"
   },
   "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$",
   "setupFiles": [
-    "<rootDir>/test/jestSetup.tsx"
+    "<rootDir>/jest/jestSetup.tsx"
   ]
 }
