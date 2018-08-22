@@ -4,22 +4,22 @@ node {
     def BRANCH = "${git.GIT_BRANCH}"
 
     def IS_MASTER = "${BRANCH}" == "master"
-    def IS_DEV = "${BRANCH}" == "dev"
+    def IS_STAGING = "${BRANCH}" == "staging"
 
-    def devApp
+    def nightlyApp
 
     stage('Build nightly') {
-        def tag = IS_DEV ? "nightly" : "nightly-${git.GIT_COMMIT}"
-        devApp = docker.build("shiro/home-fe:${tag}", "--rm -f docker/fe/Dockerfile .")
+        def tag = IS_STAGING ? "nightly" : "nightly-${git.GIT_COMMIT}"
+        nightlyApp = docker.build("shiro/home-fe:${tag}", "--rm -f docker/fe/Dockerfile .")
     }
 
     try {
         stage('Test nightly') {
-            devApp.inside {
+            nightlyApp.inside {
                 sh ''' 
                    ln -s /opt/app/node_modules .
+                   yarn lint:report || true
                    yarn test:report
-                   yarn lint:report
                    rm node_modules
                    '''
             }
@@ -29,14 +29,14 @@ node {
         junit 'report/junit/*.xml'
         checkstyle pattern: 'report/checkstyle/*.xml'
 
-        if (!IS_DEV) { // only keep master builds for cache
+        if (!IS_STAGING && !IS_MASTER) { // only keep master and staging builds
             echo 'Removing docker image'
-            sh "docker rmi ${devApp.id} 2>/dev/null"
+            sh "docker rmi ${nightlyApp.id} 2>/dev/null"
         }
     }
 
 
-    if (IS_DEV) {
+    if (IS_STAGING) {
         def stagingApp
 
         stage('Build staging') {
@@ -45,10 +45,10 @@ node {
     }
 
     if (IS_MASTER) {
-        def prodApp
+        def productionApp
 
         stage('Build production') {
-            prodApp = docker.build("shiro/home-fe:stable", "--rm -f docker/fe/Dockerfile.prod .")
+            productionApp = docker.build("shiro/home-fe:stable", "--rm -f docker/fe/Dockerfile.prod .")
         }
     }
 }
