@@ -4,7 +4,7 @@ import { getType } from "typesafe-actions";
 
 
 export interface IExampleState {
-    readonly message: string;
+    readonly message: string
 }
 
 export const exampleInitialState: IExampleState = {
@@ -14,7 +14,7 @@ export const exampleInitialState: IExampleState = {
 export const exampleReducer: Reducer<IExampleState, IExampleAction> = (state = exampleInitialState, action) => {
     switch (action.type) {
         case getType(exampleActions.editMessage): {
-            const message = action.payload;
+            const message = action.payload
 
             return { ...state, message };
         }
