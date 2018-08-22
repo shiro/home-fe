@@ -12,8 +12,7 @@ const mockStore = configureStore<IRootState>();
 
 describe("HelloWorld", () => {
     let store: MockStore<IRootState>;
-    let shallowWrapper
-    var foo
+    let shallowWrapper;
 
     beforeEach(() => {
         store = mockStore(rootIntialState);
