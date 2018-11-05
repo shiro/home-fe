@@ -7,7 +7,6 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const HappyPack = require("happypack");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const { appRoot, pathResolver, stats, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack.config");
@@ -16,7 +15,6 @@ const { helpers } = require("./webpack.shared");
 
 module.exports = {
     name: "client",
-    mode: "production",
     devtool: "source-map",
     stats,
     entry: [
@@ -65,8 +63,8 @@ module.exports = {
                         options: {
                             plugins: function() {
                                 return [autoprefixer];
-                            }
-                        }
+                            },
+                        },
                     },
                     {
                         loader: "sass-loader",
@@ -80,11 +78,11 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true,
-            }),
+            // new UglifyJsPlugin({
+            //     cache: true,
+            //     parallel: true,
+            //     sourceMap: true,
+            // }),
             new OptimizeCSSAssetsPlugin({}),
         ],
         splitChunks: {
@@ -95,7 +93,7 @@ module.exports = {
                     name: "vendor",
                     priority: 10,
                     enforce: true,
-                }
+                },
             },
         },
     },

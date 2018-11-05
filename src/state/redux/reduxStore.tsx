@@ -1,4 +1,4 @@
-import { connectRouter, routerMiddleware as createRouterMiddleware } from "connected-react-router";
+import { routerMiddleware as createRouterMiddleware } from "connected-react-router";
 import { applyMiddleware, createStore, Store as ReduxStore } from "redux";
 import createSagaMiddleware from "redux-saga";
 import history from "state/redux/history";
@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === "development") {
 
 export const Store = (initialState: IRootState = {}) => {
     const store: ReduxStore<IRootState, IRootAction> = createStore(
-        connectRouter(history)(rootReducer),
+        rootReducer,
         initialState,
         middleware,
     );
