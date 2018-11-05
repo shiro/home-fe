@@ -10,6 +10,7 @@
     "lib": ["es6", "dom"],
     "baseUrl": ".",
     "paths": {
+      "config/*": ["config/*"],
       "server/*": ["src/server/*"],
       "components/*": ["src/components/*"],
       "containers/*": ["src/containers/*"],

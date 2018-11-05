@@ -1,5 +1,8 @@
 FROM node:9-alpine
 
+ARG BRANCH=dev
+ENV BRANCH=$BRANCH
+
 WORKDIR /opt/app/
 
 COPY package.json yarn.lock ./

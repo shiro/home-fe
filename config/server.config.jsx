@@ -1,5 +1,6 @@
 import objectAssignDeep from "object-assign-deep";
 
+import commonConfig from "config/common.config";
 import { webpackPaths, webpackFiles } from "config/webpack.config";
 
 
@@ -7,7 +8,7 @@ const prod = {};
 
 const dev = {};
 
-const envConfig = process.env.NODE_ENV === "production" ? prod : dev;
+const envConfig = commonConfig.isProduction ? prod : dev;
 
 
 export default objectAssignDeep(
@@ -21,7 +22,8 @@ export default objectAssignDeep(
             htmlTemplate: webpackFiles.htmlTemplateDest,
         },
     },
-    envConfig
+    commonConfig,
+    envConfig,
 );
 
 

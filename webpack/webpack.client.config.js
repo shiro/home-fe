@@ -123,6 +123,7 @@ module.exports = {
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify("development"),
             "process.env.TARGET": JSON.stringify("client"),
+            "process.env.BRANCH": JSON.stringify(process.env.BRANCH),
         }),
     ],
 };

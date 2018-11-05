@@ -10,7 +10,7 @@ node {
 
     stage('Build nightly') {
         def tag = IS_STAGING ? "nightly" : "nightly-${git.GIT_COMMIT}"
-        nightlyApp = docker.build("shiro/home-fe:${tag}", "--rm -f docker/fe/Dockerfile .")
+        nightlyApp = docker.build("shiro/home-fe:${tag}", "--rm -f docker/fe/Dockerfile --build-arg BRANCH=${BRANCH} .")
     }
 
     try {
@@ -40,7 +40,7 @@ node {
         def stagingApp
 
         stage('Build staging') {
-            stagingApp = docker.build("shiro/home-fe:staging", "--rm -f docker/fe/Dockerfile.prod .")
+            stagingApp = docker.build("shiro/home-fe:staging", "--rm --build-arg BRANCH=${BRANCH} -f docker/fe/Dockerfile.prod .")
         }
     }
 
@@ -48,7 +48,7 @@ node {
         def productionApp
 
         stage('Build production') {
-            productionApp = docker.build("shiro/home-fe:stable", "--rm -f docker/fe/Dockerfile.prod .")
+            productionApp = docker.build("shiro/home-fe:stable", "--rm --build-arg BRANCH=${BRANCH} -f docker/fe/Dockerfile.prod .")
         }
     }
 }
