@@ -5,7 +5,7 @@ const autoprefixer = require("autoprefixer");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
@@ -78,11 +78,11 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-            // new UglifyJsPlugin({
-            //     cache: true,
-            //     parallel: true,
-            //     sourceMap: true,
-            // }),
+            new TerserPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true,
+            }),
             new OptimizeCSSAssetsPlugin({}),
         ],
         splitChunks: {

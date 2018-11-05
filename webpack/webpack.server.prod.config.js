@@ -1,7 +1,6 @@
 const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
-const HappyPack = require("happypack");
 const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
 
@@ -69,11 +68,11 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-            // new TerserPlugin({
-            //     cache: true,
-            //     parallel: true,
-            //     sourceMap: true,
-            // }),
+            new TerserPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true,
+            }),
         ],
     },
     plugins: [
