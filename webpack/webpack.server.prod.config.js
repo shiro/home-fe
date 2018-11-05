@@ -89,6 +89,7 @@ module.exports = {
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify("production"),
             "process.env.TARGET": JSON.stringify("server"),
+            "process.env.BRANCH": JSON.stringify(process.env.BRANCH),
         }),
     ],
 };
