@@ -2,7 +2,7 @@ const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const HappyPack = require("happypack");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
 
 const { appRoot, pathResolver, stats, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack.config");
@@ -11,7 +11,7 @@ const { helpers } = require("./webpack.shared");
 
 module.exports = {
     name: "server",
-    mode: "production",
+    mode: "development",
     target: "node",
     devtool: "source-map",
     stats,
@@ -69,11 +69,11 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true,
-            }),
+            // new TerserPlugin({
+            //     cache: true,
+            //     parallel: true,
+            //     sourceMap: true,
+            // }),
         ],
     },
     plugins: [

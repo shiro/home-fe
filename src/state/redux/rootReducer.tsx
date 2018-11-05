@@ -1,8 +1,9 @@
-import { RouterState } from "connected-react-router";
+import { connectRouter, RouterState } from "connected-react-router";
 import { Action, combineReducers, Reducer } from "redux";
 
 import { IExampleAction } from "state/example/exampleActions";
 import { exampleInitialState, exampleReducer, IExampleState } from "state/example/exampleReducer";
+import history from "state/redux/history";
 
 
 export interface IRootState {
@@ -21,4 +22,5 @@ export type IRootAction =
 // the one reducer to bind them...
 export const rootReducer: Reducer<IRootState, IRootAction> = combineReducers({
     example: exampleReducer,
+    router: connectRouter(history),
 });
