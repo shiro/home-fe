@@ -5,9 +5,8 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HappyPack = require("happypack");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
-const { appRoot, webpackPaths, webpackFiles } = require("../config/webpack.config");
-
-const webpackBase = require("./webpack.server.prod.config");
+const { appRoot, webpackPaths, webpackFiles } = require("../config/webpack");
+const webpackBase = require("./server.prod.config");
 
 
 module.exports = {
@@ -48,7 +47,6 @@ module.exports = {
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify("development"),
             "process.env.TARGET": JSON.stringify("server"),
-            "process.env.BRANCH": JSON.stringify(process.env.BRANCH),
         }),
     ],
 };

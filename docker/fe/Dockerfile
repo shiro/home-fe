@@ -1,5 +1,8 @@
 FROM node:9-alpine
 
+ARG BRANCH=dev
+ENV BRANCH=$BRANCH
+
 RUN apk add --no-cache \
     bash gawk curl sed grep bc coreutils
 

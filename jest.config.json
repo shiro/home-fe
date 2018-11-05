@@ -6,6 +6,7 @@
     "tsx"
   ],
   "moduleNameMapper": {
+    "^config(.*)$": "<rootDir>/config/$1",
     "^components(.*)$": "<rootDir>/src/components/$1",
     "^containers(.*)$": "<rootDir>/src/containers/$1",
     "^style(.*)$": "<rootDir>/src/style/$1",
