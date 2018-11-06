@@ -1,12 +1,16 @@
 import objectAssignDeep from "object-assign-deep";
 
-import commonConfig from "config/common.config";
-import { webpackPaths, webpackFiles } from "config/webpack.config";
+import commonConfig from "./common.config";
+import { webpackPaths, webpackFiles } from "./webpack.config";
 
 
-const prod = {};
+const prod = {
+    serverPort: 80,
+};
 
-const dev = {};
+const dev = {
+    serverPort: 48525,
+};
 
 const envConfig = commonConfig.isProduction ? prod : dev;
 
@@ -25,6 +29,3 @@ export default objectAssignDeep(
     commonConfig,
     envConfig,
 );
-
-
-

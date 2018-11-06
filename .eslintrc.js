@@ -35,6 +35,9 @@ module.exports = {
             "version": "16.4.1",
         },
         "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            },
             "webpack": { "config": path.join(appRoot, "./config/webpack.config.js") }
         }
     },

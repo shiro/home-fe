@@ -1,11 +1,13 @@
 import objectAssignDeep from "object-assign-deep";
 
-import commonConfig from "config/common.config";
+import commonConfig from "./common.config";
 
 
 const prod = {};
 
-const dev = {};
+const dev = {
+    webpackPort: 80,
+};
 
 const envConfig = commonConfig.isProduction ? prod : dev;
 

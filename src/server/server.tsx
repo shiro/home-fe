@@ -1,12 +1,14 @@
 import http from "http";
 import serverApp from "server/serverApp";
 
+import config from "config/server.config";
+
 
 const server = http.createServer(serverApp);
 
 let currentApp = serverApp;
-server.listen(80);
-console.log("server started");
+server.listen(config.serverPort);
+console.log(`server started on port ${config.serverPort}`);
 
 
 if ((module as any).hot) {
