@@ -89,16 +89,21 @@ module.exports = {
                 loader: "css-loader",
                 query: {
                     sourceMap: true,
+                    importLoaders: 2,
                 },
             },
-            {
-                loader: "postcss-loader",
-                options: {
-                    plugins: function() {
-                        return [autoprefixer];
-                    },
-                },
-            },
+            // {
+            //     loader: "postcss-loader",
+            //     options: {
+            //         // sourceMap: true,
+            //         // plugins: () => [autoprefixer()],
+            //         // plugins: () => [],
+            //         ident: "postcss",
+            //         plugins: (loader) => [
+            //             // require("autoprefixer")({ browsers: ["last 3 versions", "iOS 9"] }),
+            //         ]
+            //     },
+            // },
             {
                 loader: "sass-loader",
                 query: { sourceMap: true },
