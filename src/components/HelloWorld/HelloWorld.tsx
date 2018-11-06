@@ -3,6 +3,8 @@ import * as React from "react";
 import * as styles from "components/HelloWorld/HelloWorld.scss";
 import config from "config/client.config";
 
+import UnderConstruction from "components/UnderConstruction/UnderConstruction";
+
 
 export interface IHelloWorldProps {
     message: string;
@@ -11,7 +13,7 @@ export interface IHelloWorldProps {
 
 const HelloWorld: React.SFC<IHelloWorldProps> = (props) => {
     if (config.branch === "master")
-        return <div><h1>Under Construction</h1><p>Expect a shiny new Blog soon!</p></div>;
+        return <UnderConstruction/>;
 
     return (
         <div>

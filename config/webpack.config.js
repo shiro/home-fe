@@ -20,14 +20,13 @@ module.exports.babelOptions = {
 };
 
 module.exports.pathResolver = {
-    extensions: [".tsx", ".js", ".jsx", ".scss"],
+    extensions: [".tsx", ".js", ".jsx", ".style"],
     alias: {
         ["server"]: path.join(appRoot, "src/server"),
         ["components"]: path.join(appRoot, "src/components"),
         ["containers"]: path.join(appRoot, "src/containers"),
         ["routes"]: path.join(appRoot, "src/routes"),
         ["state"]: path.join(appRoot, "src/state"),
-        ["scss"]: path.join(appRoot, "src/scss"),
         ["style"]: path.join(appRoot, "src/style"),
         ["api"]: path.join(appRoot, "src/api"),
         ["config"]: path.join(appRoot, "config"),
