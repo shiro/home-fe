@@ -74,7 +74,13 @@ module.exports = {
                     name: "vendor",
                     priority: 10,
                     enforce: true,
-                }
+                },
+                // styles: {
+                //     name: "styles",
+                //     test: /\.css$/,
+                //     chunks: "all",
+                //     enforce: true
+                // }
             },
         },
     },

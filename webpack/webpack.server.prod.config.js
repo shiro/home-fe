@@ -49,20 +49,7 @@ module.exports = {
             },
             {
                 test: /\.(sass|scss)$/,
-                use: [
-                    {
-                        loader: "css-loader/locals",
-                        options: {
-                            camelCase: true,
-                            modules: true,
-                            sourceMap: true,
-                        },
-                    },
-                    {
-                        loader: "sass-loader",
-                        options: { sourceMap: true },
-                    },
-                ],
+                use: ["null-loader"],
             },
         ],
     },
@@ -71,7 +58,6 @@ module.exports = {
             new TerserPlugin({
                 cache: true,
                 parallel: true,
-                sourceMap: true,
             }),
         ],
     },
