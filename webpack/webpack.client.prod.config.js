@@ -20,7 +20,7 @@ module.exports = {
     entry: [
         "@babel/polyfill",
         path.join(appRoot, "src/client"),
-        path.join(appRoot, "src/scss/app.scss"),
+        path.join(appRoot, "src/style/app.scss"),
     ],
     output: {
         filename: "[name].js",
@@ -47,32 +47,7 @@ module.exports = {
             },
             {
                 test: /\.(sass|scss)$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: "css-loader",
-                        options: {
-                            camelCase: true,
-                            modules: true,
-                            sourceMap: true,
-                            minimize: true,
-                        },
-                    },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            plugins: function() {
-                                return [autoprefixer];
-                            },
-                        },
-                    },
-                    {
-                        loader: "sass-loader",
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                ],
+                use: "happypack/loader?id=sass",
             },
         ],
     },
@@ -106,6 +81,27 @@ module.exports = {
             {
                 loader: "ts-loader",
                 query: { happyPackMode: true },
+            },
+        ]),
+        helpers.happyPack("sass", [
+            "style-loader",
+            {
+                loader: "css-loader",
+                query: {
+                    sourceMap: true,
+                },
+            },
+            {
+                loader: "postcss-loader",
+                options: {
+                    plugins: function() {
+                        return [autoprefixer];
+                    },
+                },
+            },
+            {
+                loader: "sass-loader",
+                query: { sourceMap: true },
             },
         ]),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
