@@ -1,4 +1,5 @@
 import { default as express, Response } from "express";
+import helmet from "helmet";
 import renderTemplateMiddleware from "server/middleware/renderTemplateMiddleware";
 
 import reduxStoreMiddleware from "server/middleware/reduxStoreMiddleware";
@@ -8,6 +9,9 @@ import { IRequest } from "server/serverTypes";
 
 // create our app
 const serverApp: express.Application = express();
+
+// helmet provides security features
+serverApp.use(helmet());
 
 // serve static resources
 serverApp.use("/assets", express.static("dist"));
