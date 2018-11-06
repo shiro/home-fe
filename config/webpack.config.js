@@ -61,4 +61,3 @@ module.exports.webpackFiles = {
     htmlTemplateSrc: "app.html",
     htmlTemplateDest: "app.html",
 };
-

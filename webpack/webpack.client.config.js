@@ -1,3 +1,4 @@
+require("@babel/register");
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -8,6 +9,8 @@ const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const { appRoot, webpackPaths, webpackFiles, babelOptions } = require("../config/webpack.config");
 const { helpers } = require("./webpack.shared");
+const serverConfig = require("../config/server.config.jsx").default;
+const clientConfig = require("../config/client.config.jsx").default;
 
 const webpackBase = require("./webpack.client.prod.config");
 
@@ -34,11 +37,11 @@ module.exports = {
         inline: true,
         proxy: [{
             context: ["**"],
-            target: "http://localhost:80",
+            target: `http://localhost:${serverConfig.serverPort}`,
         }],
         host: "0.0.0.0",
         stats: webpackBase.stats,
-        port: 8080,
+        port: clientConfig.webpackPort,
         // contentBase: path.join(appRoot, "assets") // proxy stuff url,
         publicPath: "/assets/", // wds resources url
     },
