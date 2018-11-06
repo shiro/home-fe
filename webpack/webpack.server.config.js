@@ -1,3 +1,4 @@
+require("@babel/register");
 const path = require("path");
 const webpack = require("webpack");
 const StartServerPlugin = require("start-server-webpack-plugin");
@@ -6,6 +7,7 @@ const HappyPack = require("happypack");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const { appRoot, webpackPaths, webpackFiles } = require("../config/webpack.config");
+const serverConfig = require("../config/server.config.jsx").default;
 
 const webpackBase = require("./webpack.server.prod.config");
 
@@ -49,6 +51,7 @@ module.exports = {
             "process.env.NODE_ENV": JSON.stringify("development"),
             "process.env.TARGET": JSON.stringify("server"),
             "process.env.BRANCH": JSON.stringify(process.env.BRANCH),
+            "process.env.SERVER_PORT": serverConfig.serverPort,
         }),
     ],
 };

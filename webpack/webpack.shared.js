@@ -1,4 +1,5 @@
 const HappyPack = require("happypack");
+const webpack = require("webpack");
 
 
 const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
