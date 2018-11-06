@@ -89,14 +89,13 @@ module.exports = {
                 loader: "css-loader",
                 query: {
                     sourceMap: true,
+                    importLoaders: 2,
                 },
             },
             {
                 loader: "postcss-loader",
                 options: {
-                    plugins: function() {
-                        return [autoprefixer];
-                    },
+                    sourceMap: true,
                 },
             },
             {
