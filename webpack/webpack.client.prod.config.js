@@ -47,7 +47,24 @@ module.exports = {
             },
             {
                 test: /\.(sass|scss)$/,
-                use: "happypack/loader?id=sass",
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader",
+                        query: {
+                            sourceMap: true,
+                            importLoaders: 2,
+                        },
+                    },
+                    {
+                        loader: "postcss-loader",
+                        options: { sourceMap: true },
+                    },
+                    {
+                        loader: "sass-loader",
+                        query: { sourceMap: true },
+                    },
+                ],
             },
         ],
     },
@@ -56,7 +73,6 @@ module.exports = {
             new TerserPlugin({
                 cache: true,
                 parallel: true,
-                sourceMap: true,
             }),
             new OptimizeCSSAssetsPlugin({}),
         ],
@@ -81,26 +97,6 @@ module.exports = {
             {
                 loader: "ts-loader",
                 query: { happyPackMode: true },
-            },
-        ]),
-        helpers.happyPack("sass", [
-            "style-loader",
-            {
-                loader: "css-loader",
-                query: {
-                    sourceMap: true,
-                    importLoaders: 2,
-                },
-            },
-            {
-                loader: "postcss-loader",
-                options: {
-                    sourceMap: true,
-                },
-            },
-            {
-                loader: "sass-loader",
-                query: { sourceMap: true },
             },
         ]),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
