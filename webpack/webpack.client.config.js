@@ -23,7 +23,7 @@ module.exports = {
     entry: [
         "@babel/polyfill",
         path.join(appRoot, "src/client"),
-        path.join(appRoot, "src/scss/app.scss"),
+        path.join(appRoot, "src/style/app.scss"),
     ],
     devServer: {
         contentBase: path.join(appRoot, "dist"),
@@ -92,11 +92,8 @@ module.exports = {
         helpers.happyPack("sass", [
             "style-loader",
             {
-                loader: "typings-for-css-modules-loader",
+                loader: "css-loader",
                 query: {
-                    namedExport: true,
-                    camelCase: true,
-                    modules: true,
                     sourceMap: true,
                 },
             },

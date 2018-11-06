@@ -1,0 +1,7 @@
+@import "~style/functions";
+
+@mixin text-small-descriptive(){
+  @include rhythm(14);
+  color: rgba(color(black, ash), .5);
+  font-weight: 600;
+}
