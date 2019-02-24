@@ -1,4 +1,4 @@
-FROM node:9-alpine
+FROM node:11.10.0-alpine
 
 ARG BRANCH=dev
 ENV BRANCH=$BRANCH
