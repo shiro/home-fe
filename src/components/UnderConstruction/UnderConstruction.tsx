@@ -2,13 +2,16 @@ import cn from "classnames";
 import * as React from "react";
 
 import "./UnderConstruction.sass";
+import { ReactElement } from "react";
 
+
+let foo = this;
 
 interface Props {
     className?: string;
 }
 
-const UnderConstruction: React.SFC<Props> = (props) => {
+const UnderConstruction: React.FC<Props> = (props) => {
     const { className } = props;
 
     return (

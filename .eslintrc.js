@@ -4,13 +4,15 @@ let path = require("path");
 const appRoot = path.join(__dirname);
 
 module.exports = {
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "plugins": [
-        "typescript",
         "import",
         "jest",
+        "react-hooks",
+        "@typescript-eslint",
     ],
     "extends": [
+        "plugin:@typescript-eslint/recommended",
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:import/errors",
@@ -32,7 +34,7 @@ module.exports = {
     ],
     "settings": {
         "react": {
-            "version": "16.4.1",
+            "version": "16.8.3",
         },
         "import/resolver": {
             "node": {
@@ -48,6 +50,11 @@ module.exports = {
         "browser": true
     },
     "rules": {
+        "@typescript-eslint/explicit-function-return-type": 0,
+        "@typescript-eslint/no-var-requires": 0,
+        "@typescript-eslint/interface-name-prefix": 0,
+        "@typescript-eslint/no-namespace": 0,
+        
         "no-unused-vars": 0,
         "no-console": 0,
         "semi": [2, "always"],
@@ -55,7 +62,6 @@ module.exports = {
         "camelcase": 1,
         "indent": [2, 4, { "SwitchCase": 1 }],
         "spaced-comment": [2, "always"],
-        // "sort-imports": "error",
         "arrow-spacing": [2, { "before": true, "after": true }],
         "comma-dangle": [2, "always-multiline"],
         "no-multi-spaces": 2,
@@ -70,6 +76,7 @@ module.exports = {
         "jest/valid-expect": 0
     },
     "parserOptions": {
+        "project": "./tsconfig.json",
         "ecmaVersion": 8,
         "sourceType": "module",
         "ecmaFeatures": {
