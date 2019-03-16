@@ -1,7 +1,7 @@
 import http from "http";
 import serverApp from "server/serverApp";
 
-import config from "config/server.config";
+import config from "config/server.config.jsx";
 
 
 const server = http.createServer(serverApp);

@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import * as styles from "components/HelloWorld/HelloWorld.scss";
-import config from "config/client.config";
+import config from "config/client.config.jsx";
 
 import UnderConstruction from "components/UnderConstruction/UnderConstruction";
 
@@ -11,7 +11,7 @@ export interface IHelloWorldProps {
 }
 
 
-const HelloWorld: React.SFC<IHelloWorldProps> = (props) => {
+const HelloWorld: React.FC<IHelloWorldProps> = (props) => {
     if (config.branch === "master")
         return <UnderConstruction/>;
 

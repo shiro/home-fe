@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import React from "react";
 import configureStore, { MockStore } from "redux-mock-store";
 
-import HelloContainer from "containers/HelloContainer/HelloContainer";
+import HelloContainer from "containers//HelloContainer";
 import { getMessage } from "state/example/exampleSelectors";
 import { IRootState, rootIntialState } from "state/redux/rootReducer";
 

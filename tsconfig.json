@@ -13,7 +13,6 @@
       "config/*": ["config/*"],
       "server/*": ["src/server/*"],
       "components/*": ["src/components/*"],
-      "containers/*": ["src/containers/*"],
       "state/*": ["src/state/*"],
       "style/*": ["src/style/*"],
       "models/*": ["src/models/*"],

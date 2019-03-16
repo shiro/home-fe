@@ -1,4 +1,4 @@
-import serverConfig from "config/server.config";
+import serverConfig from "config/server.config.jsx";
 import { Response } from "express";
 import fs from "fs";
 import path from "path";

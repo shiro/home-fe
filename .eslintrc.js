@@ -46,6 +46,9 @@ module.exports = {
         
         "no-unused-vars": 0,
         "no-console": 0,
+        "react/prop-types": 0,
+        "jest/valid-expect": 0,
+        
         "semi": [2, "always"],
         "quotes": [2, "double", { "avoidEscape": true }],
         "camelcase": 1,
@@ -58,11 +61,8 @@ module.exports = {
         "space-before-blocks": [2, { "functions": "always", "keywords": "always", "classes": "always" }],
         "space-before-function-paren": [2, { "anonymous": "never", "named": "never", "asyncArrow": "always" }],
         
-        "import/newline-after-import": [2, { "count": 2 }],
+        "import/newline-after-import": [2, { "count": 2 }]
         // "import/order": ["error", {"newlines-between": "always-and-inside-groups"}],
-        // "import/no-unresolved": 0,
-        
-        "jest/valid-expect": 0
     },
     "parserOptions": {
         "project": "./tsconfig.json",

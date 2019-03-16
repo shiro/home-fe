@@ -2,10 +2,10 @@ import * as React from "react";
 import { Route, Switch } from "react-router";
 
 import NotFound from "components/Layout/NotFound/NotFound";
-import HelloContainer from "containers/HelloContainer/HelloContainer";
+import HelloContainer from "components/HelloContainer/HelloContainer";
 
 
-const MainPage: React.SFC = () => (
+const MainPage: React.FC = () => (
     <Switch>
         <Route path="/" component={HelloContainer}/>
         <Route component={NotFound}/>
