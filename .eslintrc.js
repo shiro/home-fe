@@ -18,25 +18,14 @@ module.exports = {
         "plugin:import/errors",
         "plugin:jest/recommended",
     ],
-    "overrides": [
-        {
-            "files": ["*.ts", "*.tsx"],
-            "parser": "typescript-eslint-parser",
-            "rules": {
-                "no-undef": 0,
-                "react/prop-types": 0,
-                "no-unused-vars": 0,
-                "no-useless-constructor": 0,
-                "import/no-unresolved": 0,
-                "import/named": 0,
-            }
-        },
-    ],
     "settings": {
         "react": {
             "version": "16.8.3",
         },
         "import/resolver": {
+            // use <root>/tsconfig.json for resolving aliases
+            "typescript": {},
+    
             "node": {
                 "extensions": [".js", ".jsx", ".ts", ".tsx"]
             },
@@ -77,6 +66,7 @@ module.exports = {
     },
     "parserOptions": {
         "project": "./tsconfig.json",
+        "tsconfigRootDir": "./",
         "ecmaVersion": 8,
         "sourceType": "module",
         "ecmaFeatures": {
