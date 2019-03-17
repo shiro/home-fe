@@ -2,7 +2,7 @@ import { ConnectedRouter } from "connected-react-router";
 import React from "react";
 import { Provider } from "react-redux";
 
-import MainPage from "components/Layout/MainPage";
+import App from "components/App";
 import { IWindow } from "server/serverTypes";
 import history from "state/redux/history";
 import Store from "state/redux/reduxStore";
@@ -17,7 +17,7 @@ const ClientAppRouter = () =>
     (
         <Provider store={store}>
             <ConnectedRouter history={history}>
-                <MainPage/>
+                <App/>
             </ConnectedRouter>
         </Provider>
     );

@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Route, Switch } from "react-router";
 
-import NotFound from "components/Layout/NotFound/NotFound";
+import NotFound from "components/NotFound/NotFound";
 import HelloContainer from "components/HelloContainer/HelloContainer";
 
 
-const MainPage: React.FC = () => (
+const App: React.FC = () => (
     <Switch>
         <Route path="/" component={HelloContainer}/>
         <Route component={NotFound}/>
@@ -13,4 +13,4 @@ const MainPage: React.FC = () => (
 );
 
 
-export default MainPage;
+export default App;

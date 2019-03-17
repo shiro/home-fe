@@ -2,14 +2,14 @@ import React from "react";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router";
 
-import MainPage from "components/Layout/MainPage";
+import App from "components/App";
 
 
 const ServerAppRouter = ({ context, store, location }) =>
     (
         <Provider store={store}>
             <StaticRouter context={context} location={location}>
-                <MainPage/>
+                <App/>
             </StaticRouter>
         </Provider>
     );
