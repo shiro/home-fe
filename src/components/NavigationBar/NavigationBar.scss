@@ -1,0 +1,19 @@
+.NavigationBar {
+  //height: 2rem;
+  background: coral;
+  display: flex;
+  align-items: center;
+  //width: 50vw;
+
+  & > .nav-item {
+    @include rhythm(40, 20);
+    padding: 2rem 0;
+    margin: 0 50px;
+
+    &.active {
+      //padding-top: 16px;
+      //padding-top: 2rem;
+      border-bottom: 10px solid color(dark, black);
+    }
+  }
+}

@@ -62,7 +62,10 @@ module.exports = {
                     },
                     {
                         loader: "sass-loader",
-                        query: { sourceMap: true },
+                        options: {
+                            sourceMap: true,
+                            data: '@import "~style/global.scss";',
+                        },
                     },
                 ],
             },

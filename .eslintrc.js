@@ -43,6 +43,7 @@ module.exports = {
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/interface-name-prefix": 0,
         "@typescript-eslint/no-namespace": 0,
+        "@typescript-eslint/no-empty-interface": 0,
         
         "no-unused-vars": 0,
         "no-console": 0,
@@ -61,8 +62,8 @@ module.exports = {
         "space-before-blocks": [2, { "functions": "always", "keywords": "always", "classes": "always" }],
         "space-before-function-paren": [2, { "anonymous": "never", "named": "never", "asyncArrow": "always" }],
         
-        "import/newline-after-import": [2, { "count": 2 }]
-        // "import/order": ["error", {"newlines-between": "always-and-inside-groups"}],
+        "import/newline-after-import": [2, { "count": 2 }],
+        "import/order": 2
     },
     "parserOptions": {
         "project": "./tsconfig.json",

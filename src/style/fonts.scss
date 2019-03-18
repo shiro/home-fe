@@ -11,34 +11,4 @@
   }
 }
 
-// todo self host fonts
-// SFUIDisplay
 
-// ultra light
-@include font-face(SFUIDisplay, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont", 100);
-// thin
-@include font-face(SFUIDisplay, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont", 200);
-// regular
-@include font-face(SFUIDisplay, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont", 400);
-// medium
-@include font-face(SFUIDisplay, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont", 500);
-// semi bold
-@include font-face(SFUIDisplay, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont", 600);
-@include font-face(SFUIDisplay-Heavy, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont", 600);
-// bold
-@include font-face(SFUIDisplay, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont", 700);
-
-// SFUIText
-
-// ultra light
-@include font-face(SFUIText, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscotext-ultralight-webfont", 100);
-// thin
-@include font-face(SFUIText, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscotext-thin-webfont", 200);
-// regular
-@include font-face(SFUIText, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscotext-regular-webfont", 400);
-// medium
-@include font-face(SFUIText, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscotext-medium-webfont", 500);
-// semi bold
-@include font-face(SFUIText, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscotext-semibold-webfont", 600);
-// bold
-@include font-face(SFUIText, "https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscotext-bold-webfont", 700);

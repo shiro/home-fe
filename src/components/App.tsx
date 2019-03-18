@@ -1,15 +1,22 @@
 import * as React from "react";
-import { Route, Switch } from "react-router";
+import { Route, RouteComponentProps, Switch } from "react-router";
 
 import NotFound from "components/NotFound/NotFound";
-import HelloContainer from "components/HelloContainer/HelloContainer";
+import config from "config/client.config.jsx";
+import UnderConstruction from "components/UnderConstruction/UnderConstruction";
+import NavigationBar from "components/NavigationBar/NavigationBar";
 
+
+const mainComponent = config.branch === "master" ? UnderConstruction : null;
 
 const App: React.FC = () => (
-    <Switch>
-        <Route path="/" component={HelloContainer}/>
-        <Route component={NotFound}/>
-    </Switch>
+    <>
+        <NavigationBar/>
+        <Switch>
+            <Route path="/" component={mainComponent}/>
+            <Route component={NotFound}/>
+        </Switch>
+    </>
 );
 
 

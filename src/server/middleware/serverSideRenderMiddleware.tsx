@@ -1,8 +1,8 @@
-import AppRouter from "components/React/ServerAppRouter";
 import { NextFunction, Response } from "express";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { END } from "redux-saga";
+import AppRouter from "components/React/ServerAppRouter";
 
 
 import { IRequest, IStaticContext } from "server/serverTypes";

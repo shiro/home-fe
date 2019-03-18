@@ -1,7 +1,7 @@
-import serverConfig from "config/server.config.jsx";
-import { Response } from "express";
 import fs from "fs";
 import path from "path";
+import { Response } from "express";
+import serverConfig from "config/server.config.jsx";
 
 import { IRequest } from "server/serverTypes";
 
