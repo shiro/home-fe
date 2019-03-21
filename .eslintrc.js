@@ -25,18 +25,18 @@ module.exports = {
         "import/resolver": {
             // use <root>/tsconfig.json for resolving aliases
             "typescript": {},
-    
+            
             "node": {
-                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+                "extensions": [".js", ".jsx", ".ts", ".tsx"],
             },
-            "webpack": { "config": path.join(appRoot, "./config/webpack.config.js") }
-        }
+            "webpack": { "config": path.join(appRoot, "./config/webpack.config.js") },
+        },
     },
     "env": {
         "jest": true,
         "es6": true,
         "node": true,
-        "browser": true
+        "browser": true,
     },
     "rules": {
         "@typescript-eslint/explicit-function-return-type": 0,
@@ -62,8 +62,7 @@ module.exports = {
         "space-before-blocks": [2, { "functions": "always", "keywords": "always", "classes": "always" }],
         "space-before-function-paren": [2, { "anonymous": "never", "named": "never", "asyncArrow": "always" }],
         
-        "import/newline-after-import": [2, { "count": 2 }],
-        "import/order": 2
+        "import/order": 2, // not working yet
     },
     "parserOptions": {
         "project": "./tsconfig.json",
@@ -72,7 +71,7 @@ module.exports = {
         "sourceType": "module",
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
-            "jsx": true
-        }
-    }
+            "jsx": true,
+        },
+    },
 };

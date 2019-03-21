@@ -1,0 +1,20 @@
+.SearchBox {
+  display: inline-flex;
+  padding: 0 0 10px;
+  border-bottom: 4px solid color(light, nonfocus);
+
+  .input-box {
+    color: color(light, nonfocus);
+    @include rhythm(28, 38);
+    outline: none;
+    border: none;
+
+    &::placeholder {
+      color: color(light, nonfocus);
+    }
+
+    &:focus::placeholder {
+      opacity: 0;
+    }
+  }
+}

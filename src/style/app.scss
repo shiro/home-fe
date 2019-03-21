@@ -24,6 +24,11 @@ html {
   color: color(light, secondary);
 }
 
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+
 h1 {
   font-size: 2rem;
   @include font-family(headline);
