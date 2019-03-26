@@ -1,0 +1,26 @@
+.PostPreview {
+  border: 1px solid black;
+
+  & > .content {
+    padding: 15px 10px 10px;
+
+    & > .preview-image {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    & > .title {
+      color: color(light, primary);
+    }
+
+    & > .summary {
+
+      color: color(light, secondary);
+    }
+
+    & > .date {
+
+      color: color(light, nonfocus);
+    }
+  }
+}

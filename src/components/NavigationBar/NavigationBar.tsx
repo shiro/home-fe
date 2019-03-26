@@ -12,7 +12,7 @@ const NavigationBar: React.FC<INavigationBar> = () => {
     return (
         <nav className="NavigationBar">
             <NavLink className="nav-item"
-                exact={true} activeClassName="active" to="/">Blog</NavLink>
+                exact={true} activeClassName="active" to="/blog">Blog</NavLink>
             <NavLink className="nav-item"
                 exact={true} activeClassName="active" to="/me">ME</NavLink>
         </nav>);

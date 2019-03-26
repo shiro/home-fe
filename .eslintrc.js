@@ -54,7 +54,7 @@ module.exports = {
         "quotes": [2, "double", { "avoidEscape": true }],
         "camelcase": 1,
         "indent": [2, 4, { "SwitchCase": 1 }],
-        "spaced-comment": [2, "always"],
+        // "spaced-comment": [1, "always"],
         "arrow-spacing": [2, { "before": true, "after": true }],
         "comma-dangle": [2, "always-multiline"],
         "no-multi-spaces": 2,
