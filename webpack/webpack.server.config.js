@@ -39,9 +39,7 @@ module.exports = {
             ],
         }),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
-        new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: [webpackPaths.serverDest],
-        }),
+        new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new StartServerPlugin({
             name: webpackFiles.serverDest,

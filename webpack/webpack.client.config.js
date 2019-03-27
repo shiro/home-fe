@@ -109,9 +109,7 @@ module.exports = {
             },
         ]),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
-        new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: [webpackPaths.serverDest],
-        }),
+        new CleanWebpackPlugin(),
         new CopyWebpackPlugin([{
             from: webpackPaths.assetSrc,
         }]),
