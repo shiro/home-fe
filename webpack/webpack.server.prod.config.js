@@ -71,8 +71,8 @@ module.exports = {
             },
         ]),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
-        new CleanWebpackPlugin([webpackPaths.serverDest], {
-            root: webpackPaths.appRoot,
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: [webpackPaths.serverDest],
         }),
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify("production"),

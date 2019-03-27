@@ -103,8 +103,8 @@ module.exports = {
             },
         ]),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
-        new CleanWebpackPlugin([webpackPaths.clientDest], {
-            root: webpackPaths.appRoot,
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: [webpackPaths.serverDest],
         }),
         new CopyWebpackPlugin([{
             from: webpackPaths.assetSrc,
