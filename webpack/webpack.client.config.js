@@ -21,7 +21,7 @@ module.exports = {
     devtool: "inline-source-map",
     watchOptions: {
         aggregateTimeout: 300,
-        poll: true,
+        poll: 1000,
     },
     entry: [
         "@babel/polyfill",
@@ -104,7 +104,7 @@ module.exports = {
                 loader: "sass-loader",
                 options: {
                     sourceMap: true,
-                    data: '@import "~style/global.scss";',
+                    // data: '@import "~style/global.scss";',
                 },
             },
         ]),

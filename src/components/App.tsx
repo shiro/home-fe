@@ -21,7 +21,11 @@ const App: React.FC = () => (
         </CenterContainer>
 
         <PostPreviewContainer>
-            <PostPreview/>
+            {/*<PostPreview/>*/}
+            {/*<PostPreview/>*/}
+            {/*<PostPreview/>*/}
+            {/*<PostPreview/>*/}
+            {/*<PostPreview/>*/}
         </PostPreviewContainer>
         {/*<Switch>*/}
         {/*    <Route path="/blog" component={mainComponent}/>*/}

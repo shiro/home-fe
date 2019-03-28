@@ -20,7 +20,7 @@ html {
   text-rendering: optimizeLegibility;
   @include font-family(normal);
   font-weight: 400;
-  @include fluid-type(1000px, 1600px, 17px, 19px);
+  @include fluid-type(1000px, 1600px, 16px, 18px);
   color: color(light, secondary);
 }
 

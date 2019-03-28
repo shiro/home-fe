@@ -18,8 +18,8 @@ serverApp.use("/assets", express.static("dist"));
 
 // server everything else
 serverApp.get("*",
-    reduxStoreMiddleware,
-    serverSideRenderMiddleware,
+    // reduxStoreMiddleware,
+    // serverSideRenderMiddleware,
     renderTemplateMiddleware,
 );
 

@@ -1,6 +1,27 @@
-.PostPreviewContainer {
-  display: grid;
+$gutter-horizontal: 30px;
+$gutter-vertical: 30px;
 
-  //grid-template-columns: repeat(auto-fill, 500px);
-  grid-template-rows: repeat(auto-fill, 500px);
+.PostPreviewContainer {
+  width: 100%;
+  padding: 30px $gutter-horizontal;
+
+  & > .MasonGrid {
+    display: flex;
+    align-items: flex-start;
+    margin-left: -$gutter-horizontal;
+    width: auto;
+
+    & > .column {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 0;
+      padding-left: $gutter-horizontal;
+      background-clip: padding-box;
+
+      & > * {
+        margin: 0 auto $gutter-vertical;
+      }
+    }
+  }
 }
+
