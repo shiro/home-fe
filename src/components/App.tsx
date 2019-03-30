@@ -9,6 +9,7 @@ import SearchBox from "components/Search/SearchBox";
 import CenterContainer from "components/Layout/CenterContainer/CenterContainer";
 import PostPreviewContainer from "components/BlogSite/PostPreview/PostPreviewContainer";
 import PostPreview from "components/BlogSite/PostPreview/PostPreview";
+import FullPost from "components/BlogSite/FullPost/FullPost";
 
 
 const mainComponent = config.branch === "master" ? UnderConstruction : null;
@@ -20,17 +21,11 @@ const App: React.FC = () => (
             <SearchBox/>
         </CenterContainer>
 
-        <PostPreviewContainer>
-            {/*<PostPreview/>*/}
-            {/*<PostPreview/>*/}
-            {/*<PostPreview/>*/}
-            {/*<PostPreview/>*/}
-            {/*<PostPreview/>*/}
-        </PostPreviewContainer>
-        {/*<Switch>*/}
-        {/*    <Route path="/blog" component={mainComponent}/>*/}
-        {/*    <Route component={NotFound}/>*/}
-        {/*</Switch>*/}
+        <Switch>
+            <Route path="/post/:id" component={FullPost}/>
+            <Route path="/" render={() => <PostPreviewContainer/>}/>
+            {/*<Route component={NotFound}/>*/}
+        </Switch>
     </>
 );
 
