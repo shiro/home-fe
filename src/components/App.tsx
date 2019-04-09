@@ -10,6 +10,7 @@ import CenterContainer from "components/Layout/CenterContainer/CenterContainer";
 import PostPreviewContainer from "components/BlogSite/PostPreview/PostPreviewContainer";
 import PostPreview from "components/BlogSite/PostPreview/PostPreview";
 import FullPost from "components/BlogSite/FullPost/FullPost";
+import FullPostContainer from "components/BlogSite/FullPost/FullPostContainer";
 
 
 const mainComponent = config.branch === "master" ? UnderConstruction : null;
@@ -22,7 +23,7 @@ const App: React.FC = () => (
         </CenterContainer>
 
         <Switch>
-            <Route path="/post/:id" component={FullPost}/>
+            <Route path="/post/:id" component={FullPostContainer}/>
             <Route path="/" render={() => <PostPreviewContainer/>}/>
             {/*<Route component={NotFound}/>*/}
         </Switch>

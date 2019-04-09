@@ -1,5 +1,6 @@
 $colors: (
   light: (
+    white: #ffffff,
     primary: #545454,
     secondary: #858585,
     nonfocus: #AAAAAA,
@@ -7,5 +8,9 @@ $colors: (
   ),
   dark: (
     black: #1E1E1E,
+    concrete: #363636,
+    primary: #E5E5E5,
+    secondary: #BEBEBE,
+    nonfocus: #8D8D8D,
   ),
 );

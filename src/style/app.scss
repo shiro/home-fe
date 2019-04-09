@@ -30,9 +30,12 @@ html {
 }
 
 h1 {
-  font-size: 2rem;
-  @include font-family(headline);
-  font-weight: 500;
+  @include heading-light-primary-general;
+}
+
+figcaption {
+  color: color(light, nonfocus);
+  @include rhythm(23, 60);
 }
 
 a {

@@ -1,7 +1,24 @@
 @import "~style/functions";
 
-@mixin text-small-descriptive(){
+@mixin text-small-descriptive() {
   @include rhythm(14);
   color: rgba(color(black, ash), .5);
   font-weight: 600;
+}
+
+
+@mixin heading-light-primary-general() {
+  font-size: 2rem;
+  color: color(light, primary);
+  @include font-family(headline);
+  @include rhythm(42, 57);
+  font-weight: 500;
+}
+
+@mixin quote-light-general() {
+  font-size: 2rem;
+  color: color(light, primary);
+  @include font-family(headline);
+  @include rhythm(42, 57);
+  font-weight: 500;
 }
