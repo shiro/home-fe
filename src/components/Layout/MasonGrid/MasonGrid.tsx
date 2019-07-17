@@ -10,12 +10,6 @@ export interface IMasonGrid {
 
 
 const MasonGrid: React.FC<IMasonGrid> = (props) => {
-    // const [showChild, setShowChild] = useState( false );
-    // if (!showChild) return null;
-    // useEffect( () => {
-    //     setShowChild( true );
-    // }, [] )
-
     const { children, columns } = props;
 
     const [renderedColumns, setRenderedColumns] = useState( -1 );

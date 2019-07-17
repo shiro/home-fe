@@ -3,29 +3,31 @@ import "./PostPreview.scss";
 
 
 export interface IPostPreview {
-    summary: string;
+    title: string;
+    content: string;
+    image?: string;
+    date: string;
 }
 
-
 const PostPreview: React.FC<IPostPreview> = (props) => {
-    const { summary } = props;
+    const { title, content, image = "/assets/stock-temple1.png", date } = props;
 
     return (
         <article className="PostPreview">
+            {image &&
             <div className="preview-image-container">
                 <img className="preview-image"
-                     src="/assets/stock-temple1.png" alt="stock temple"/>
+                     src={image} alt="stock temple"/>
             </div>
+            }
 
             <div className="content">
-                <h1 className="title">Visiting Kyoto's shrines</h1>
+                <h1 className="title">{title}</h1>
                 <p className="summary">
-                    {/*Today I took a walk around some of the most popular shrines in Kyoto.*/}
-                    {/*The journey was full of fun, food, culture and much more!*/}
-                    {summary}
+                    {content}
                 </p>
 
-                <span className="date">June 18, 2019</span>
+                <span className="date">{date}</span>
             </div>
         </article>
     );

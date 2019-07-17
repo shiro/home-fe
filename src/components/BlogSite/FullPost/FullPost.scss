@@ -2,7 +2,7 @@
 
 .FullPost {
   color: color(light, secondary);
-  @include rhythm(30, 46);
+  @include rhythm(23, 30);
 
   & > * {
     margin: 0 0 61px;
@@ -10,7 +10,7 @@
 
   & > h1 {
     color: color(light, primary);
-    @include rhythm(42, 57);
+    @include rhythm(29, 57);
 
     //margin: 0 0 61px;
   }
