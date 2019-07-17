@@ -1,10 +1,8 @@
-.helloWorld{
-
-  &-title{
+.HelloWorld{
+  & > .heading{
     color:red;
   }
-  &-message{
+  & > .message{
     color:blue;
   }
-
 }

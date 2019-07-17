@@ -21,7 +21,7 @@ module.exports = {
     devtool: "inline-source-map",
     watchOptions: {
         aggregateTimeout: 300,
-        poll: true,
+        poll: 1000,
     },
     entry: [
         "@babel/polyfill",
@@ -78,12 +78,6 @@ module.exports = {
                     priority: 10,
                     enforce: true,
                 },
-                // styles: {
-                //     name: "styles",
-                //     test: /\.css$/,
-                //     chunks: "all",
-                //     enforce: true
-                // }
             },
         },
     },
@@ -108,13 +102,14 @@ module.exports = {
             },
             {
                 loader: "sass-loader",
-                query: { sourceMap: true },
+                options: {
+                    sourceMap: true,
+                    // data: '@import "~style/global.scss";',
+                },
             },
         ]),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
-        new CleanWebpackPlugin([webpackPaths.clientDest], {
-            root: webpackPaths.appRoot,
-        }),
+        new CleanWebpackPlugin(),
         new CopyWebpackPlugin([{
             from: webpackPaths.assetSrc,
         }]),

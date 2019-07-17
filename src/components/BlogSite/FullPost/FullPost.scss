@@ -1,0 +1,26 @@
+@import "~style/global.scss";
+
+.FullPost {
+  color: color(light, secondary);
+  @include rhythm(23, 30);
+
+  & > * {
+    margin: 0 0 61px;
+  }
+
+  & > h1 {
+    color: color(light, primary);
+    @include rhythm(29, 57);
+
+    //margin: 0 0 61px;
+  }
+
+  & > blockquote {
+    border-left: 13px solid color(light, secondary);
+
+    padding: 0 0 0 37px;
+  }
+
+
+
+}

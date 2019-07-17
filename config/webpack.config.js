@@ -24,7 +24,6 @@ module.exports.pathResolver = {
     alias: {
         ["server"]: path.join(appRoot, "src/server"),
         ["components"]: path.join(appRoot, "src/components"),
-        ["containers"]: path.join(appRoot, "src/containers"),
         ["routes"]: path.join(appRoot, "src/routes"),
         ["state"]: path.join(appRoot, "src/state"),
         ["style"]: path.join(appRoot, "src/style"),

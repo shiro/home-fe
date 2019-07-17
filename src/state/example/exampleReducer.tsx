@@ -1,6 +1,6 @@
 import { Reducer } from "redux";
-import { exampleActions, IExampleAction } from "state/example/exampleActions";
 import { getType } from "typesafe-actions";
+import { exampleActions, IExampleAction } from "state/example/exampleActions";
 
 
 export interface IExampleState {

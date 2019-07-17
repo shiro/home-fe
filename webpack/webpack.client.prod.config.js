@@ -62,7 +62,10 @@ module.exports = {
                     },
                     {
                         loader: "sass-loader",
-                        query: { sourceMap: true },
+                        options: {
+                            sourceMap: true,
+                            data: '@import "~style/global.scss";',
+                        },
                     },
                 ],
             },
@@ -100,9 +103,7 @@ module.exports = {
             },
         ]),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
-        new CleanWebpackPlugin([webpackPaths.clientDest], {
-            root: webpackPaths.appRoot,
-        }),
+        new CleanWebpackPlugin(),
         new CopyWebpackPlugin([{
             from: webpackPaths.assetSrc,
         }]),
