@@ -39,9 +39,7 @@ module.exports = {
             ],
         }),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
-        new CleanWebpackPlugin([webpackPaths.serverDest], {
-            root: webpackPaths.appRoot,
-        }),
+        new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new StartServerPlugin({
             name: webpackFiles.serverDest,

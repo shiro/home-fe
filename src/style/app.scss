@@ -1,3 +1,5 @@
+@import "~style/variables/colorVariables";
+@import "~style/variables/fontVariables";
 @import "~style/reset";
 @import "~style/functions";
 @import "~style/textStyles";
@@ -8,7 +10,7 @@ body, html {
   height: 100%;
 }
 
-#app{
+#app {
   height: 100%;
 }
 
@@ -18,17 +20,27 @@ html {
   text-rendering: optimizeLegibility;
   @include font-family(normal);
   font-weight: 400;
-  @include fluid-type(1000, 1600px, 16px, 18px);
-  color: color(black, base);
+  @include fluid-type(1000px, 1600px, 16px, 18px);
+  color: color(light, secondary);
+}
+
+* {
+  position: relative;
+  box-sizing: border-box;
 }
 
 h1 {
-  font-size: 2rem;
-  @include font-family(headline);
-  font-weight: 500;
+  @include heading-light-primary-general;
 }
 
-a { cursor: pointer; }
+figcaption {
+  color: color(light, nonfocus);
+  @include rhythm(23, 60);
+}
+
+a {
+  cursor: pointer;
+}
 
 b {
   font-weight: 900;

@@ -3,11 +3,11 @@ let History;
 
 switch(process.env.TARGET) {
     case "client": {
-        History = require("history/createBrowserHistory").default;
+        History = require("history").createBrowserHistory;
         break;
     }
     default: {
-        History = require("history/createMemoryHistory").default;
+        History = require("history").createMemoryHistory;
     }
 }
 

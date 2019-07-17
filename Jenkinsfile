@@ -27,7 +27,7 @@ node {
     } finally {
         cobertura coberturaReportFile: 'report/cobertura/*.xml'
         junit 'report/junit/*.xml'
-        checkstyle pattern: 'report/checkstyle/*.xml'
+        recordIssues pattern: 'report/checkstyle/*.xml'
 
         if (!IS_STAGING && !IS_MASTER) { // only keep master and staging builds
             echo 'Removing docker image'

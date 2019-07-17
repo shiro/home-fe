@@ -1,5 +1,6 @@
 @import "~style/variables/colorVariables";
 @import "~style/variables/fontVariables";
+@import "~style/variables/breakpointVariables";
 
 @function color($color-name, $color-variant:null) {
   @if ($color-variant != null) {
@@ -22,9 +23,14 @@
 
 // TYPOGRAPHY
 
-@mixin font-size($size: 12 ) {
+@mixin font-size($size: 12) {
   font-size: $size + px; //fallback for old browsers
   font-size: ($size / 16) + rem;
+}
+
+@mixin rem-size($size) {
+  font-size: $size + px; //fallback for old browsers
+  font-size: ($size / 100) + rem;
 }
 
 @mixin line-height($lh: 20) {
@@ -59,6 +65,33 @@
       }
       @media screen and (min-width: $max-vw) {
         font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+@function respond($how, $breakpoint, $breakpoint2:0) {
+  @if ($how == above or $how == below) {
+    @if map-has-key($breakpoints, $breakpoint) {
+      $breakpoint-value: map-get($breakpoints, $breakpoint);
+      $breakpoint-bound: if($how == above, min, max);
+
+      @return '#{$breakpoint-bound}-width: #{$breakpoint-value}';
+    } @else {
+      @warn 'Invalid breakpoint: #{$breakpoint}.';
+    }
+  } @else if ($how == between) {
+    @if map-has-key($breakpoints, $breakpoint) and map-has-key($breakpoints, $breakpoint2) {
+      $lower-breakpoint: map-get($breakpoints, $breakpoint);
+      $upper-breakpoint: map-get($breakpoints, $breakpoint2);
+
+      @return 'min-width: #{$lower-breakpoint}) and (max-width: #{$upper-breakpoint}';
+    } @else {
+      @if (map-has-key($breakpoints, $breakpoint) == false) {
+        @warn 'Your kower breakpoint was invalid: #{$breakpoint}.';
+      }
+      @if (map-has-key($breakpoints, $breakpoint2) == false) {
+        @warn 'Your upper breakpoint was invalid: #{$breakpoint2}.';
       }
     }
   }

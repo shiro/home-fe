@@ -1,14 +1,16 @@
 $colors: (
-  primary: (
-    base: #5d27cc,
+  light: (
+    white: #ffffff,
+    primary: #545454,
+    secondary: #858585,
+    nonfocus: #AAAAAA,
+    very-light: #DBDBDB,
   ),
-  white: (
-    base: #fff,
-  ),
-  grey: (
-    base: #f6f6f6,
-  ),
-  black: (
-    base: #000,
+  dark: (
+    black: #1E1E1E,
+    concrete: #363636,
+    primary: #E5E5E5,
+    secondary: #BEBEBE,
+    nonfocus: #8D8D8D,
   ),
 );
