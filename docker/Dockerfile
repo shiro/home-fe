@@ -1,25 +1,30 @@
-FROM node:11.10.0-alpine AS dev
+FROM node:12.6.0-alpine AS development
 
 ARG BRANCH=dev
 ENV BRANCH=$BRANCH
+ENV NODE_ENV=development
+
+WORKDIR /opt/app/
 
 RUN apk add --no-cache \
     bash gawk curl sed grep bc coreutils
 
-WORKDIR /opt/app/
+RUN npm i -g npm-check-updates
 
-COPY package.json yarn.lock ./
+COPY package.json package-lock.json ./
 
-RUN yarn --frozen-lockfile && \
+RUN npm i && \
     chmod -R 777 .
 
 COPY . ./
 
-CMD yarn --frozen-lockfile || echo "could not verify node packages, trying to run anyways" && \
-    yarn dev
+CMD npm i || echo "could not verify node packages, trying to run anyways" && \
+    npm run dev
 
 
-FROM node:11.10.0-alpine AS prod
+FROM node:12.6.0-alpine AS production
+
+ENV NODE_ENV=production
 
 WORKDIR /opt/app
 
@@ -27,7 +32,6 @@ COPY --from=dev /opt/app/dist dist
 COPY --from=dev /opt/app/dist_server dist_server
 COPY --from=dev /opt/app/node_modules /tmp/node_modules
 
-RUN yarn --production --frozen-lockfile --ignore-scripts
+RUN npm prune
 
-
-CMD yarn prod:run
+CMD npm run prod:run

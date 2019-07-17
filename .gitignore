@@ -3,6 +3,4 @@ dist/
 dist_server/
 logs/
 
-yarn-error.log
-
 report/
